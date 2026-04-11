@@ -75,14 +75,14 @@ const commodityRates: CommodityRate[] = [
 ];
 
 const tradeActivities = [
-  { flag: '\U0001f1e8\U0001f1f3', text: 'Rice \u00b7 500 MT \u00b7 Booked \u2192 Guangzhou',          time: 'just now'  },
-  { flag: '\U0001f1e9\U0001f1ea', text: 'Copper Cathode \u00b7 20 MT \u00b7 Shipped \u2192 Hamburg',   time: '2 min ago' },
-  { flag: '\U0001f1f8\U0001f1ec', text: 'Pepper \u00b7 5 MT \u00b7 Confirmed \u2192 Singapore',        time: '4 min ago' },
-  { flag: '\U0001f1e6\U0001f1ea', text: 'Cashew \u00b7 10 MT \u00b7 Delivered \u2192 Dubai',           time: '6 min ago' },
-  { flag: '\U0001f1f3\U0001f1f1', text: 'Aluminium \u00b7 25 MT \u00b7 Loaded at Kakinada Port',       time: '9 min ago' },
-  { flag: '\U0001f1f2\U0001f1fe', text: 'Palm Oil \u00b7 100 MT \u00b7 FOB Confirmed \u2190 Malaysia', time: '11 min ago'},
-  { flag: '\U0001f1ec\U0001f1e7', text: 'Teak A \u00b7 80 CBM \u00b7 Vessel at Vizag Port',           time: '14 min ago'},
-  { flag: '\U0001f1ef\U0001f1f5', text: 'Sugar S30 \u00b7 200 MT \u00b7 Customs Cleared \u2192 Tokyo', time: '18 min ago'},
+  { flag: '🇨🇳', text: 'Rice \u00b7 500 MT \u00b7 Booked \u2192 Guangzhou',          time: 'just now'  },
+  { flag: '🇩🇪', text: 'Copper Cathode \u00b7 20 MT \u00b7 Shipped \u2192 Hamburg',   time: '2 min ago' },
+  { flag: '🇸🇬', text: 'Pepper \u00b7 5 MT \u00b7 Confirmed \u2192 Singapore',        time: '4 min ago' },
+  { flag: '🇦🇪', text: 'Cashew \u00b7 10 MT \u00b7 Delivered \u2192 Dubai',           time: '6 min ago' },
+  { flag: '🇳🇱', text: 'Aluminium \u00b7 25 MT \u00b7 Loaded at Kakinada Port',       time: '9 min ago' },
+  { flag: '🇲🇾', text: 'Palm Oil \u00b7 100 MT \u00b7 FOB Confirmed \u2190 Malaysia', time: '11 min ago'},
+  { flag: '🇬🇧', text: 'Teak A \u00b7 80 CBM \u00b7 Vessel at Vizag Port',           time: '14 min ago'},
+  { flag: '🇯🇵', text: 'Sugar S30 \u00b7 200 MT \u00b7 Customs Cleared \u2192 Tokyo', time: '18 min ago'},
 ];
 
 const WA = 'https://wa.me/918838442155';
@@ -236,9 +236,9 @@ export default function Home() {
               {mobileMenuOpen && (
                 <div className="lg:hidden border-t border-green-900/30 py-4 space-y-1">
                   {[
-                    { label: 'Home', id: 'hero' }, { label: '\U0001f33e Agri Commodities', id: 'agri' },
-                    { label: '\U0001f3ed Non-Agri Commodities', id: 'non-agri' }, { label: '\U0001f4ca Market Prices', id: 'rates' },
-                    { label: '\U0001f6a2 Logistics', id: 'logistics' }, { label: '\U0001f4c4 Documentation', id: 'documentation' },
+                    { label: 'Home', id: 'hero' }, { label: '🌾 Agri Commodities', id: 'agri' },
+                    { label: '🏭 Non-Agri Commodities', id: 'non-agri' }, { label: '📊 Market Prices', id: 'rates' },
+                    { label: '🚢 Logistics', id: 'logistics' }, { label: '📄 Documentation', id: 'documentation' },
                     { label: 'About Us', id: 'about' },
                   ].map(item => (
                     <button key={item.id} onClick={() => scrollTo(item.id)}
@@ -323,14 +323,14 @@ export default function Home() {
                     </div>
                     <div className="space-y-4">
                       {[
-                        ['\U0001f310', 'Live Market Prices \u2013 Agri & Non-Agri'],
-                        ['\U0001f4e6', 'Full Supply Chain Management'],
-                        ['\U0001f682', 'Inland & International Freight Listing'],
-                        ['\U0001f4e1', 'Real-Time Shipment Tracking'],
-                        ['\U0001f4c4', 'End-to-End Trade Documentation'],
-                        ['\U0001f50d', 'Quality Inspection Coordination'],
-                        ['\U0001f916', 'AI Supply & Demand Predictions'],
-                        ['\U0001f91d', 'Verified Buyer\u2013Supplier Matching'],
+                        ['🌐', 'Live Market Prices \u2013 Agri & Non-Agri'],
+                        ['📦', 'Full Supply Chain Management'],
+                        ['🚂', 'Inland & International Freight Listing'],
+                        ['📡', 'Real-Time Shipment Tracking'],
+                        ['📄', 'End-to-End Trade Documentation'],
+                        ['🔍', 'Quality Inspection Coordination'],
+                        ['🤖', 'AI Supply & Demand Predictions'],
+                        ['🤝', 'Verified Buyer\u2013Supplier Matching'],
                       ].map(([icon, text], i) => (
                         <div key={i}
                           className="flex items-center gap-3 group cursor-default"
@@ -400,9 +400,9 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                 {[
-                  { label: 'CONNECT',    border: 'border-green-600', bg: 'bg-green-900/40', color: 'text-green-300', icon: '\U0001f517', delay: '0s',   desc: 'Match verified buyers with trusted suppliers, farmers & producers globally.' },
+                  { label: 'CONNECT',    border: 'border-green-600', bg: 'bg-green-900/40', color: 'text-green-300', icon: '🔗', delay: '0s',   desc: 'Match verified buyers with trusted suppliers, farmers & producers globally.' },
                   { label: 'FACILITATE', border: 'border-amber-600', bg: 'bg-amber-900/20', color: 'text-amber-300', icon: '\u2699\uFE0F', delay: '1.2s', desc: 'Manage documentation, inspections, freight, and compliance in one platform.' },
-                  { label: 'DELIVER',    border: 'border-green-400', bg: 'bg-green-800/30', color: 'text-green-200', icon: '\U0001f6a2', delay: '2.4s', desc: 'Track real-time shipment from source to port or final destination.' },
+                  { label: 'DELIVER',    border: 'border-green-400', bg: 'bg-green-800/30', color: 'text-green-200', icon: '🚢', delay: '2.4s', desc: 'Track real-time shipment from source to port or final destination.' },
                 ].map((item, i) => (
                   <div key={i} className={`relative border-2 ${item.border} ${item.bg} rounded-xl p-8 hover:scale-105 transition-transform group cursor-default`}>
                     {i > 0 && <span className="hidden md:block absolute -left-5 top-1/2 -translate-y-1/2 text-amber-500 text-2xl font-black">&rarr;</span>}
@@ -426,10 +426,10 @@ export default function Home() {
                   <p className="text-green-400 italic text-sm mb-8">Farm-Fresh. Compliant. Delivered.</p>
                   <div className="space-y-3">
                     {[
-                      { cat: 'GRAINS & CEREALS', items: 'Rice \u00b7 Wheat \u00b7 Maize \u00b7 Millets',         icon: '\U0001f33e' },
-                      { cat: 'SPICES',           items: 'Pepper \u00b7 Cardamom \u00b7 Turmeric \u00b7 Chilli',  icon: '\U0001f336' },
-                      { cat: 'OILSEEDS & OILS',  items: 'Groundnut \u00b7 Sunflower \u00b7 Coconut \u00b7 Palm', icon: '\U0001fad2' },
-                      { cat: 'CASH CROPS',       items: 'Sugar \u00b7 Cotton \u00b7 Cocoa \u00b7 Cashew',        icon: '\U0001f95c' },
+                      { cat: 'GRAINS & CEREALS', items: 'Rice \u00b7 Wheat \u00b7 Maize \u00b7 Millets',         icon: '🌾' },
+                      { cat: 'SPICES',           items: 'Pepper \u00b7 Cardamom \u00b7 Turmeric \u00b7 Chilli',  icon: '🌶' },
+                      { cat: 'OILSEEDS & OILS',  items: 'Groundnut \u00b7 Sunflower \u00b7 Coconut \u00b7 Palm', icon: '🫒' },
+                      { cat: 'CASH CROPS',       items: 'Sugar \u00b7 Cotton \u00b7 Cocoa \u00b7 Cashew',        icon: '🥜' },
                     ].map((c, i) => (
                       <div key={i} className="border border-green-800/40 rounded-lg px-4 py-3 hover:border-green-500/60 hover:bg-green-900/30 transition group cursor-default flex items-start gap-3">
                         <span className="text-xl flex-shrink-0 group-hover:scale-125 transition-transform">{c.icon}</span>
@@ -499,10 +499,10 @@ export default function Home() {
                   <p className="text-blue-400 italic text-sm mb-8">Industrial-Grade. Globally Sourced.</p>
                   <div className="space-y-3">
                     {[
-                      { cat: 'METALS',      items: 'Copper Cathode \u00b7 Aluminium Ingots \u00b7 Zinc', icon: '\U0001f529' },
+                      { cat: 'METALS',      items: 'Copper Cathode \u00b7 Aluminium Ingots \u00b7 Zinc', icon: '🔩' },
                       { cat: 'MINERALS',    items: 'Iron Ore \u00b7 Silica Sand \u00b7 Barite',          icon: '\u26cf\uFE0F' },
-                      { cat: 'CHEMICALS',   items: 'Caustic Soda \u00b7 Soda Ash \u00b7 Urea',           icon: '\U0001f9ea' },
-                      { cat: 'WOOD/TIMBER', items: 'Teak \u00b7 Hardwood \u00b7 Wood Pellets',           icon: '\U0001fab5' },
+                      { cat: 'CHEMICALS',   items: 'Caustic Soda \u00b7 Soda Ash \u00b7 Urea',           icon: '🧪' },
+                      { cat: 'WOOD/TIMBER', items: 'Teak \u00b7 Hardwood \u00b7 Wood Pellets',           icon: '🪵' },
                     ].map((c, i) => (
                       <div key={i} className="border border-blue-800/40 rounded-lg px-4 py-3 hover:border-blue-500/60 hover:bg-blue-900/25 transition group cursor-default flex items-start gap-3">
                         <span className="text-xl flex-shrink-0 group-hover:scale-125 transition-transform">{c.icon}</span>
@@ -530,12 +530,12 @@ export default function Home() {
                     style={{ background: 'linear-gradient(90deg,#14532d,#ca8a04,#1e3a5f)', animation: 'fadeSlideUp 1.5s ease forwards' }} />
                   <div className="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8 relative z-10">
                     {[
-                      { num: '01', label: 'PROCUREMENT',   color: 'bg-green-900',  ring: 'ring-green-700',  icon: '\U0001f91d' },
-                      { num: '02', label: 'INSPECTION',    color: 'bg-green-700',  ring: 'ring-green-500',  icon: '\U0001f50d' },
-                      { num: '03', label: 'DOCUMENTATION', color: 'bg-green-500',  ring: 'ring-green-300',  icon: '\U0001f4c4' },
-                      { num: '04', label: 'LOGISTICS',     color: 'bg-amber-600',  ring: 'ring-amber-400',  icon: '\U0001f69b' },
-                      { num: '05', label: 'LIVE TRACKING', color: 'bg-orange-600', ring: 'ring-orange-400', icon: '\U0001f4e1' },
-                      { num: '06', label: 'DELIVERY',      color: 'bg-blue-800',   ring: 'ring-blue-500',   icon: '\U0001f3c1' },
+                      { num: '01', label: 'PROCUREMENT',   color: 'bg-green-900',  ring: 'ring-green-700',  icon: '🤝' },
+                      { num: '02', label: 'INSPECTION',    color: 'bg-green-700',  ring: 'ring-green-500',  icon: '🔍' },
+                      { num: '03', label: 'DOCUMENTATION', color: 'bg-green-500',  ring: 'ring-green-300',  icon: '📄' },
+                      { num: '04', label: 'LOGISTICS',     color: 'bg-amber-600',  ring: 'ring-amber-400',  icon: '🚛' },
+                      { num: '05', label: 'LIVE TRACKING', color: 'bg-orange-600', ring: 'ring-orange-400', icon: '📡' },
+                      { num: '06', label: 'DELIVERY',      color: 'bg-blue-800',   ring: 'ring-blue-500',   icon: '🏁' },
                     ].map((step, i) => (
                       <div key={i} className="text-center group cursor-default"
                         style={{ animation: `fadeSlideUp 0.5s ease ${i * 0.12}s both` }}>
@@ -595,10 +595,10 @@ export default function Home() {
                 </div>
                 <div className="lg:col-span-2 space-y-4">
                   {[
-                    { accent: 'border-green-500',  icon: '\U0001f916', t: 'Supply & Demand Prediction', d: 'AI models trained on 5-year trade data, weather patterns, and seasonal cycles forecast commodity availability and price direction 30\u201390 days ahead.' },
-                    { accent: 'border-amber-500',  icon: '\U0001f4ca', t: 'Market Sentiment Indicator',  d: 'Aggregated signals from government policies, global trade news, and commodity exchange movements \u2014 giving a real-time sentiment score.' },
-                    { accent: 'border-blue-500',   icon: '\U0001f514', t: 'Price Alert Engine',          d: 'Set custom price thresholds and receive instant SMS/email alerts when your target commodity hits your buy or sell trigger price.' },
-                    { accent: 'border-orange-500', icon: '\U0001f4c8', t: 'Historical Trend Charts',     d: 'Interactive 1W/1M/6M/1Y price charts with volume overlay and moving averages for informed procurement decisions.' },
+                    { accent: 'border-green-500',  icon: '🤖', t: 'Supply & Demand Prediction', d: 'AI models trained on 5-year trade data, weather patterns, and seasonal cycles forecast commodity availability and price direction 30\u201390 days ahead.' },
+                    { accent: 'border-amber-500',  icon: '📊', t: 'Market Sentiment Indicator',  d: 'Aggregated signals from government policies, global trade news, and commodity exchange movements \u2014 giving a real-time sentiment score.' },
+                    { accent: 'border-blue-500',   icon: '🔔', t: 'Price Alert Engine',          d: 'Set custom price thresholds and receive instant SMS/email alerts when your target commodity hits your buy or sell trigger price.' },
+                    { accent: 'border-orange-500', icon: '📈', t: 'Historical Trend Charts',     d: 'Interactive 1W/1M/6M/1Y price charts with volume overlay and moving averages for informed procurement decisions.' },
                   ].map((item, i) => (
                     <div key={i}
                       className={`border-l-4 ${item.accent} bg-[#162616]/40 rounded-r-xl p-5 hover:bg-green-900/15 hover:translate-x-1 transition group cursor-default`}>
@@ -675,11 +675,11 @@ export default function Home() {
                   </div>
                   <div className="border border-t-0 border-green-900/20 rounded-b-xl divide-y divide-green-900/10">
                     {[
-                      { t: 'Truck & Container Booking', d: 'Compare available trucks, mini-trucks & containers from verified transport partners across AP, Telangana, Tamil Nadu.', icon: '\U0001f69b' },
-                      { t: 'Warehouse Locator',         d: 'Find bonded and cold-storage warehouses near origin or port \u2014 with capacity, certification and rate comparison.',  icon: '\U0001f3ea' },
-                      { t: 'Inland Freight Rate Board', d: 'Live freight rates from origin to nearest rail head, port, or CFS/ICD \u2014 updated daily by lane.',                    icon: '\U0001f4b9' },
-                      { t: 'GPS Tracking Dashboard',    d: 'Real-time truck GPS tracking with geofence alerts, ETAs, and driver contact \u2014 visible to buyer and seller.',        icon: '\U0001f4e1' },
-                      { t: 'Port Gate-In Assistance',   d: 'Coordinate port delivery orders, weighbridge, port health clearances, and container stuffing appointments.',            icon: '\U0001f3d7\uFE0F' },
+                      { t: 'Truck & Container Booking', d: 'Compare available trucks, mini-trucks & containers from verified transport partners across AP, Telangana, Tamil Nadu.', icon: '🚛' },
+                      { t: 'Warehouse Locator',         d: 'Find bonded and cold-storage warehouses near origin or port \u2014 with capacity, certification and rate comparison.',  icon: '🏪' },
+                      { t: 'Inland Freight Rate Board', d: 'Live freight rates from origin to nearest rail head, port, or CFS/ICD \u2014 updated daily by lane.',                    icon: '💹' },
+                      { t: 'GPS Tracking Dashboard',    d: 'Real-time truck GPS tracking with geofence alerts, ETAs, and driver contact \u2014 visible to buyer and seller.',        icon: '📡' },
+                      { t: 'Port Gate-In Assistance',   d: 'Coordinate port delivery orders, weighbridge, port health clearances, and container stuffing appointments.',            icon: '🏗\uFE0F' },
                     ].map((item, i) => (
                       <div key={i} className="px-6 py-4 hover:bg-green-900/15 hover:translate-x-1 transition group cursor-default flex items-start gap-3">
                         <span className="text-lg flex-shrink-0 mt-0.5 group-hover:scale-125 transition-transform">{item.icon}</span>
@@ -698,10 +698,10 @@ export default function Home() {
                   <div className="border border-t-0 border-blue-900/20 rounded-b-xl divide-y divide-blue-900/10">
                     {[
                       { t: 'Freight Rate Comparison',   d: 'Compare FCL/LCL rates from Maersk, MSC, CMA CGM and more on major trade lanes.',       icon: '\u2696\uFE0F' },
-                      { t: 'Vessel & Sailing Schedule', d: 'Check sailing schedules, transit times, vessel ETD/ETA from Indian ports to global destinations.', icon: '\U0001f5d3\uFE0F' },
-                      { t: 'Freight Forwarder Connect', d: 'Access vetted freight forwarders and NVOCCs for sea, air, and multimodal cargo.',         icon: '\U0001f91d' },
-                      { t: 'Live AIS Vessel Tracking',  d: 'Real-time AIS-based ship tracking \u2014 know exactly where your cargo is on the ocean.', icon: '\U0001f6f0\uFE0F' },
-                      { t: 'BL & Shipping Documents',   d: 'Digital Bill of Lading issuance coordination, e-BL support, document courier tracking.',  icon: '\U0001f4cb' },
+                      { t: 'Vessel & Sailing Schedule', d: 'Check sailing schedules, transit times, vessel ETD/ETA from Indian ports to global destinations.', icon: '🗓\uFE0F' },
+                      { t: 'Freight Forwarder Connect', d: 'Access vetted freight forwarders and NVOCCs for sea, air, and multimodal cargo.',         icon: '🤝' },
+                      { t: 'Live AIS Vessel Tracking',  d: 'Real-time AIS-based ship tracking \u2014 know exactly where your cargo is on the ocean.', icon: '🛰\uFE0F' },
+                      { t: 'BL & Shipping Documents',   d: 'Digital Bill of Lading issuance coordination, e-BL support, document courier tracking.',  icon: '📋' },
                     ].map((item, i) => (
                       <div key={i} className="px-6 py-4 hover:bg-blue-900/10 hover:translate-x-1 transition group cursor-default flex items-start gap-3">
                         <span className="text-lg flex-shrink-0 mt-0.5 group-hover:scale-125 transition-transform">{item.icon}</span>
@@ -753,12 +753,12 @@ export default function Home() {
               <h2 className="text-3xl font-black mb-10">INNOVATIONS ABSENT IN EXISTING MARKET</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {[
-                  { badge: 'MARKET FIRST', badgeCls: 'bg-[#162616] text-green-400 border border-green-700', title: 'Unified Agri + Industrial Platform', titleCls: 'text-white',    icon: '\U0001f310', desc: 'No existing platform combines agricultural and industrial commodity trading, compliance, freight, and live pricing in a single UX. Tradefokus does.' },
-                  { badge: 'UNIQUE',       badgeCls: 'bg-green-500/20 text-green-300 border border-green-500', title: 'Farm-to-Port Visibility',        titleCls: 'text-green-400', icon: '\U0001f680', desc: 'End-to-end tracking from farm gate pickup \u2192 inland transit \u2192 CFS stuffing \u2192 vessel departure \u2192 destination port. Not offered by any Indian B2B platform today.' },
-                  { badge: 'PROPRIETARY', badgeCls: 'bg-amber-500/20 text-amber-300 border border-amber-600', title: 'Broker Intelligence Layer',       titleCls: 'text-amber-400', icon: '\U0001f9e0', desc: 'In-house brokerage intelligence powers smart buyer-seller matching based on commodity type, grade, volume, and delivery preference.' },
-                  { badge: 'AI-POWERED',  badgeCls: 'bg-[#0d1525] text-blue-400 border border-blue-700',     title: 'AI Harvest & Price Forecasting', titleCls: 'text-white',    icon: '\U0001f916', desc: '30\u201390 day price and supply forecasting using satellite imagery, APMC data, and historical trade volumes \u2014 helping buyers lock prices early.' },
+                  { badge: 'MARKET FIRST', badgeCls: 'bg-[#162616] text-green-400 border border-green-700', title: 'Unified Agri + Industrial Platform', titleCls: 'text-white',    icon: '🌐', desc: 'No existing platform combines agricultural and industrial commodity trading, compliance, freight, and live pricing in a single UX. Tradefokus does.' },
+                  { badge: 'UNIQUE',       badgeCls: 'bg-green-500/20 text-green-300 border border-green-500', title: 'Farm-to-Port Visibility',        titleCls: 'text-green-400', icon: '🚀', desc: 'End-to-end tracking from farm gate pickup \u2192 inland transit \u2192 CFS stuffing \u2192 vessel departure \u2192 destination port. Not offered by any Indian B2B platform today.' },
+                  { badge: 'PROPRIETARY', badgeCls: 'bg-amber-500/20 text-amber-300 border border-amber-600', title: 'Broker Intelligence Layer',       titleCls: 'text-amber-400', icon: '🧠', desc: 'In-house brokerage intelligence powers smart buyer-seller matching based on commodity type, grade, volume, and delivery preference.' },
+                  { badge: 'AI-POWERED',  badgeCls: 'bg-[#0d1525] text-blue-400 border border-blue-700',     title: 'AI Harvest & Price Forecasting', titleCls: 'text-white',    icon: '🤖', desc: '30\u201390 day price and supply forecasting using satellite imagery, APMC data, and historical trade volumes \u2014 helping buyers lock prices early.' },
                   { badge: 'TIME-SAVING', badgeCls: 'bg-orange-500/20 text-orange-300 border border-orange-600', title: 'Live Freight Rate Comparison', titleCls: 'text-orange-400',icon: '\u26a1',    desc: 'Compare inland truck rates AND ocean freight rates in real time from within the trade enquiry flow \u2014 saving hours of manual coordination.' },
-                  { badge: 'EFFICIENCY',  badgeCls: 'bg-blue-500/20 text-blue-300 border border-blue-600',   title: 'One-Click Document Pack',        titleCls: 'text-blue-400', icon: '\U0001f4c4', desc: 'Generate a complete shipment document pack from a single confirmed order \u2014 Invoice, PL, COA, BL draft, shipping bill \u2014 in under 3 minutes.' },
+                  { badge: 'EFFICIENCY',  badgeCls: 'bg-blue-500/20 text-blue-300 border border-blue-600',   title: 'One-Click Document Pack',        titleCls: 'text-blue-400', icon: '📄', desc: 'Generate a complete shipment document pack from a single confirmed order \u2014 Invoice, PL, COA, BL draft, shipping bill \u2014 in under 3 minutes.' },
                 ].map((item, i) => (
                   <div key={i}
                     className="bg-[#162616]/30 border border-green-900/30 rounded-xl p-6 hover:border-green-700/60 hover:bg-green-900/15 hover:-translate-y-1 transition group cursor-default">
@@ -783,10 +783,10 @@ export default function Home() {
               <h2 className="text-3xl font-black mb-10">WHY CHOOSE TRADEFOKUS</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { icon: '\U0001f4bc', title: 'For Buyers',              border: 'border-amber-500/20',  titleCls: 'text-amber-400',  delay: '0s',   items: ['Access verified suppliers globally', 'Transparent live pricing \u2014 no hidden markups', 'Full visibility into shipment at every stage', 'One platform for sourcing, logistics & documents'] },
-                  { icon: '\U0001f33e', title: 'For Suppliers & Farmers', border: 'border-green-500/20',  titleCls: 'text-green-400',  delay: '0.9s', items: ['Direct reach to premium buyers worldwide', 'Fair price discovery based on market data', 'Documentation help \u2014 no expert needed', 'Faster payment cycles via secure escrow'] },
-                  { icon: '\U0001f3ed', title: 'For Manufacturers',       border: 'border-blue-500/20',   titleCls: 'text-blue-400',   delay: '1.8s', items: ['Steady raw material procurement pipelines', 'Demand forecasting for production planning', 'Industrial-grade spec verification', 'Bulk vessel & container rate comparison'] },
-                  { icon: '\U0001f680', title: 'Platform Benefits',       border: 'border-purple-500/20', titleCls: 'text-purple-400', delay: '2.7s', items: ['Zero commission \u2014 pay per lead/service', '24x7 support from trade experts', 'APEDA/FSSAI/IEC compliance embedded', "Built for India's export growth ambition"] },
+                  { icon: '💼', title: 'For Buyers',              border: 'border-amber-500/20',  titleCls: 'text-amber-400',  delay: '0s',   items: ['Access verified suppliers globally', 'Transparent live pricing \u2014 no hidden markups', 'Full visibility into shipment at every stage', 'One platform for sourcing, logistics & documents'] },
+                  { icon: '🌾', title: 'For Suppliers & Farmers', border: 'border-green-500/20',  titleCls: 'text-green-400',  delay: '0.9s', items: ['Direct reach to premium buyers worldwide', 'Fair price discovery based on market data', 'Documentation help \u2014 no expert needed', 'Faster payment cycles via secure escrow'] },
+                  { icon: '🏭', title: 'For Manufacturers',       border: 'border-blue-500/20',   titleCls: 'text-blue-400',   delay: '1.8s', items: ['Steady raw material procurement pipelines', 'Demand forecasting for production planning', 'Industrial-grade spec verification', 'Bulk vessel & container rate comparison'] },
+                  { icon: '🚀', title: 'Platform Benefits',       border: 'border-purple-500/20', titleCls: 'text-purple-400', delay: '2.7s', items: ['Zero commission \u2014 pay per lead/service', '24x7 support from trade experts', 'APEDA/FSSAI/IEC compliance embedded', "Built for India's export growth ambition"] },
                 ].map((card, i) => (
                   <div key={i}
                     className={`bg-[#0d1f0d]/60 border ${card.border} rounded-xl p-8 hover:bg-green-900/10 hover:scale-[1.02] hover:-translate-y-1 transition group cursor-default`}>
