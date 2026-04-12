@@ -26,10 +26,10 @@ interface DetailData {
 }
 
 const ACCENT = {
-  green:  { grad: 'from-green-900/80 to-green-950/95', border: 'border-green-500/30', ring: 'ring-green-500/20', text: 'text-green-400', badgeBg: 'bg-green-500/15', dot: 'bg-green-400', bar: 'bg-green-500', metricBg: 'bg-green-900/30', numGlow: 'drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]' },
-  amber:  { grad: 'from-amber-900/80 to-[#0d1f0d]/95',  border: 'border-amber-500/30', ring: 'ring-amber-500/20',  text: 'text-amber-400', badgeBg: 'bg-amber-500/15',  dot: 'bg-amber-400',  bar: 'bg-amber-500',  metricBg: 'bg-amber-900/30',  numGlow: 'drop-shadow-[0_0_8px_rgba(245,158,11,0.8)]' },
-  blue:   { grad: 'from-blue-900/80 to-[#0d1525]/95',    border: 'border-blue-500/30',  ring: 'ring-blue-500/20',   text: 'text-blue-400',  badgeBg: 'bg-blue-500/15',   dot: 'bg-blue-400',   bar: 'bg-blue-500',   metricBg: 'bg-blue-900/30',   numGlow: 'drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]' },
-  orange: { grad: 'from-orange-900/80 to-[#0d1f0d]/95',  border: 'border-orange-500/30',ring: 'ring-orange-500/20', text: 'text-orange-400',badgeBg: 'bg-orange-500/15', dot: 'bg-orange-400', bar: 'bg-orange-500', metricBg: 'bg-orange-900/30', numGlow: 'drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]' },
+  green:  { grad: 'from-green-900/80 to-green-950/95', border: 'border-green-400/50', ring: 'ring-green-400/40', text: 'text-green-400', badgeBg: 'bg-green-500/20', dot: 'bg-green-400', bar: 'bg-green-400', metricBg: 'bg-green-900/40', numGlow: 'drop-shadow-[0_0_12px_rgba(34,197,94,1)] drop-shadow-[0_0_24px_rgba(34,197,94,0.5)]' },
+  amber:  { grad: 'from-amber-900/80 to-[#0d1f0d]/95',  border: 'border-amber-400/50', ring: 'ring-amber-400/40',  text: 'text-amber-400', badgeBg: 'bg-amber-500/20',  dot: 'bg-amber-400',  bar: 'bg-amber-400',  metricBg: 'bg-amber-900/40',  numGlow: 'drop-shadow-[0_0_12px_rgba(245,158,11,1)] drop-shadow-[0_0_24px_rgba(245,158,11,0.5)]' },
+  blue:   { grad: 'from-blue-900/80 to-[#0d1525]/95',    border: 'border-blue-400/50',  ring: 'ring-blue-400/40',   text: 'text-blue-400',  badgeBg: 'bg-blue-500/20',   dot: 'bg-blue-400',   bar: 'bg-blue-400',   metricBg: 'bg-blue-900/40',   numGlow: 'drop-shadow-[0_0_12px_rgba(59,130,246,1)] drop-shadow-[0_0_24px_rgba(59,130,246,0.5)]' },
+  orange: { grad: 'from-orange-900/80 to-[#0d1f0d]/95',  border: 'border-orange-400/50',ring: 'ring-orange-400/40', text: 'text-orange-400',badgeBg: 'bg-orange-500/20', dot: 'bg-orange-400', bar: 'bg-orange-400', metricBg: 'bg-orange-900/40', numGlow: 'drop-shadow-[0_0_12px_rgba(249,115,22,1)] drop-shadow-[0_0_24px_rgba(249,115,22,0.5)]' },
 };
 
 function DetailModal({ data, onClose, wa }: { data: DetailData; onClose: () => void; wa: string }) {
@@ -61,7 +61,7 @@ function DetailModal({ data, onClose, wa }: { data: DetailData; onClose: () => v
             <div className={`text-[10px] font-black tracking-[0.15em] uppercase ${a.text} mb-3 flex items-center gap-2`}>
               <div className={`w-3 h-0.5 ${a.bar}`} /> Key Performance Metrics
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {data.metrics.map((m, i) => (
                 <div key={i} className={`${a.metricBg} border ${a.border} rounded-2xl p-3 text-center hover:scale-105 transition-transform`}>
                   <div className={`text-xl sm:text-2xl font-black ${a.text} ${a.numGlow} leading-none mb-1`}>{m.value}</div>
@@ -76,7 +76,7 @@ function DetailModal({ data, onClose, wa }: { data: DetailData; onClose: () => v
             <div className={`text-[10px] font-black tracking-[0.15em] uppercase ${a.text} mb-3 flex items-center gap-2`}>
               <div className={`w-3 h-0.5 ${a.bar}`} /> Platform Capabilities
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
               {data.features.map((f, i) => (
                 <div key={i} className="flex items-start gap-2.5 bg-white/[0.025] rounded-xl px-3 py-2.5 hover:bg-white/[0.04] transition">
                   <span className={`text-[10px] font-black ${a.text} mt-0.5 flex-shrink-0 w-4`}>0{i + 1}</span>
@@ -109,8 +109,8 @@ function DetailModal({ data, onClose, wa }: { data: DetailData; onClose: () => v
 
           {/* CTAs */}
           <div className="flex gap-3 pt-1">
-            <a href={wa} target="_blank" rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3.5 rounded-2xl font-black text-sm hover:bg-[#20c05c] transition hover:scale-[1.02] active:scale-[0.98]">
+            <a href={`https://wa.me/918838442155?text=${encodeURIComponent(`Hi TradeFokus! I'm interested in: ${data.title}. Please share detailed pricing, specs, and how this can help my business.`)}`} target="_blank" rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3.5 rounded-2xl font-black text-sm hover:bg-[#20c05c] transition hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(37,211,102,0.3)]">
               &#x1F4F1; Discuss with Expert
             </a>
             <button onClick={onClose}
@@ -175,6 +175,30 @@ const cssStyles = `
   .bar:nth-child(3) { animation-delay:0.30s; }
   .bar:nth-child(4) { animation-delay:0.45s; }
   .bar:nth-child(5) { animation-delay:0.60s; }
+  @keyframes spinGlobe {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes orbitDot {
+    0% { transform: rotate(0deg) translateX(110px) rotate(0deg); opacity:0.7; }
+    50% { opacity:1; }
+    100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); opacity:0.7; }
+  }
+  @keyframes neonPulse {
+    0%, 100% { opacity: 0.6; filter: blur(25px); }
+    50% { opacity: 1; filter: blur(35px); }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-8px) translateX(4px); }
+    75% { transform: translateY(6px) translateX(-3px); }
+  }
+  .anim-spinGlobe { animation: spinGlobe 40s linear infinite; }
+  .anim-orbit1 { animation: orbitDot 10s linear infinite; }
+  .anim-orbit2 { animation: orbitDot 14s linear reverse infinite; }
+  .anim-orbit3 { animation: orbitDot 18s linear infinite; }
+  .neon-glow { animation: neonPulse 3s ease-in-out infinite; }
+  .anim-floatSlow { animation: floatSlow 8s ease-in-out infinite; }
 `;
 
 const commodityRates: CommodityRate[] = [
@@ -226,6 +250,57 @@ const marketIntelDetails: Record<string, DetailData> = {
   'Price Alert Engine': { title:'Price Alert Engine', icon:'\uD83D\uDD14', accent:'blue', overview:'Set custom price thresholds for any tracked commodity and receive instant notifications via SMS, email, or WhatsApp when your target price is hit. Configurable for buy triggers, sell triggers, and volatility alerts.', metrics:[{label:'Alert Channels',value:'SMS/Email/WA'},{label:'Trigger Types',value:'Buy/Sell/Vol'},{label:'Delivery Speed',value:'< 30 sec'},{label:'Commodities',value:'50+'},{label:'Active Alerts',value:'Unlimited'},{label:'History',value:'90 days'}], features:['Multi-channel alert delivery (SMS, email, WhatsApp)','Buy price and sell price triggers','Volatility spike detection alerts','Daily/weekly price summary digests','Batch alert configuration for multiple commodities','Alert performance analytics and hit rate tracking'], useCases:['Buyers waiting for target price to place forward orders','Sellers timing sales at peak price points','Risk managers monitoring unexpected price volatility','Analysts tracking price movements across commodity baskets'], clients:'Alert engine used by 200+ active traders and procurement professionals across India and Southeast Asia.'},
   'Historical Trend Charts': { title:'Historical Trend Charts', icon:'\uD83D\uDCC8', accent:'orange', overview:'Interactive price charts spanning 1W, 1M, 3M, 6M, and 1Y timeframes with volume overlay, 20/50-day moving averages, Bollinger bands, and custom annotations for informed procurement and trading decisions.', metrics:[{label:'Timeframes',value:'1W to 5Y'},{label:'Chart Types',value:'Line/Candle/Bar'},{label:'Indicators',value:'MA/BB/RSI'},{label:'Export Formats',value:'PNG/PDF/CSV'},{label:'Commodities',value:'50+'},{label:'Data Depth',value:'5 Years'}], features:['Interactive zoom and pan on price history','20-day and 50-day moving average overlays','Volume-weighted price analysis','Custom date range selection and comparison','Overlay multiple commodities for correlation','Exportable charts and data tables'], useCases:['Procurement teams analyzing seasonal price patterns','CFOs reviewing commodity cost trends for budgeting','Trade analysts identifying support and resistance levels','Presentation-ready charts for board and investor reports'], clients:'Charting tools referenced by finance teams at Nestl\u00e9, commodity research desks, and EXIM bank analysts.'},
 };
+
+const nonAgriFeatureDetails: Record<string, DetailData> = {
+  'LME & Spot Price Tracker': { title:'LME & Spot Price Tracker', icon:'\uD83D\uDCCA', accent:'blue', overview:'Real-time London Metal Exchange and international spot price feeds for all industrial commodities. Track copper, aluminium, zinc, nickel, and more with live bid/ask spreads and historical volatility analysis.', metrics:[{label:'Metals Tracked',value:'20+'},{label:'Update Freq',value:'5 min'},{label:'Exchanges',value:'LME/COMEX/MCX'},{label:'History Depth',value:'10 Years'},{label:'Alert Types',value:'SMS/Email/WA'},{label:'Accuracy',value:'99.5%'}], features:['Live LME official and unofficial price feeds','COMEX and MCX futures price integration','Bid-ask spread monitoring for spot trades','Multi-currency conversion (USD/EUR/INR/GBP)','Custom price alerts with threshold triggers','Exportable price reports for procurement teams'], useCases:['Metal traders benchmarking supplier quotes against LME','Manufacturers tracking raw material cost fluctuations','Treasury teams monitoring commodity price exposure','Import houses calculating landed cost in real-time'], clients:'Trusted by metal trading desks at Tata Steel, Hindalco, and leading industrial commodity importers.'},
+  'Industrial Buyer Network': { title:'Industrial Buyer Network', icon:'\uD83C\uDFED', accent:'blue', overview:'Access a verified network of industrial buyers, manufacturers, and importers across 25+ countries. Each buyer profile includes trade history, volume capacity, payment terms, and compliance certifications.', metrics:[{label:'Verified Buyers',value:'300+'},{label:'Countries',value:'25+'},{label:'Industries',value:'12+'},{label:'Avg. Deal Size',value:'$50K+'},{label:'Response Time',value:'< 8 hrs'},{label:'Match Rate',value:'88%'}], features:['Verified buyer profiles with trade history','Industry-specific buyer categorization','Direct RFQ broadcasting to matching buyers','Credit rating and compliance pre-screening','Multi-language communication support','Automated follow-up and negotiation tracking'], useCases:['Suppliers finding premium industrial buyers globally','Cross-border B2B matchmaking for metals and chemicals','Diversifying buyer base beyond domestic market','New market entry with pre-qualified buyer connections'], clients:'Industrial matchmaking trusted by exporters supplying to European and Middle Eastern manufacturing hubs.'},
+  'Technical Spec Sheets': { title:'Technical Specification Sheets', icon:'\uD83D\uDCCB', accent:'amber', overview:'Comprehensive technical specification documents for every listed industrial commodity including purity percentages, grade classifications, test certificates, and international standard compliance (ISO, ASTM, BIS).', metrics:[{label:'Spec Parameters',value:'300+'},{label:'Standards',value:'ISO/ASTM/BIS'},{label:'Commodities',value:'40+'},{label:'Cert Types',value:'20+'},{label:'Updates',value:'Monthly'},{label:'Digital Certs',value:'100%'}], features:['Commodity-specific technical data sheets','International standard compliance mapping','Test certificate integration and verification','Grade comparison tools across origins','Custom spec requirement matching','Digital certificate delivery and archival'], useCases:['Buyers setting technical requirements for procurement','Quality teams verifying supplier test certificates','Engineers comparing material grades across sources','Compliance officers ensuring standard adherence'], clients:'Spec sheets referenced by engineering and quality teams at manufacturing enterprises across APAC.'},
+  'Dangerous Goods Compliance': { title:'Dangerous Goods Compliance', icon:'\u2622\uFE0F', accent:'orange', overview:'Complete IMDG, MSDS, and hazardous material compliance management for chemical and industrial commodity shipments. Automated HS code classification and regulatory filing with customs authorities.', metrics:[{label:'MSDS Library',value:'500+'},{label:'Compliance Regs',value:'IMDG/ADR/IATA'},{label:'HS Codes',value:'5,000+'},{label:'Filing Speed',value:'< 1 hr'},{label:'Accuracy',value:'99.8%'},{label:'Countries',value:'30+'}], features:['Automated MSDS generation and management','IMDG code classification for ocean transport','HS code lookup with duty rate estimation','Customs declaration pre-filing assistance','Hazmat packaging specification guidance','Incident response planning documentation'], useCases:['Chemical exporters ensuring IMDG compliance','Importers clearing hazardous goods at customs','Logistics teams planning dangerous goods routing','Safety officers maintaining compliance documentation'], clients:'DG compliance solutions trusted by chemical traders and logistics companies handling hazardous cargo.'},
+  'Freight & Bulk Carrier Listing': { title:'Freight & Bulk Carrier Listing', icon:'\uD83D\uDEA2', accent:'blue', overview:'Access bulk vessel availability, container options, and competitive freight rates for industrial commodity shipments. Compare break-bulk, dry bulk, and containerized options across major trade lanes.', metrics:[{label:'Vessel Types',value:'Bulk/Container/BB'},{label:'Trade Lanes',value:'60+'},{label:'Rate Updates',value:'Daily'},{label:'Partners',value:'40+'},{label:'Booking Time',value:'< 2 hrs'},{label:'Cost Savings',value:'20%'}], features:['Break-bulk and dry bulk vessel availability','Container FCL/LCL rate comparison','Multi-modal routing optimization','Charter party rate estimation','Vessel schedule and port rotation lookup','Digital booking with instant confirmation'], useCases:['Metal exporters booking bulk carriers for large orders','Chemical companies shipping in ISO tanks','Mineral traders comparing break-bulk vs container options','Manufacturers planning quarterly freight budgets'], clients:'Freight solutions used by industrial traders moving 100,000+ MT annually across global trade lanes.'},
+  'Demand Forecasting': { title:'Industrial Demand Forecasting', icon:'\uD83E\uDD16', accent:'green', overview:'AI-driven sector-level demand analytics for industrial commodities using manufacturing PMI data, construction activity indices, automotive production data, and infrastructure spending projections.', metrics:[{label:'Forecast Window',value:'30\u201390 days'},{label:'Sectors Covered',value:'8+'},{label:'Accuracy',value:'84%'},{label:'Data Sources',value:'15+'},{label:'Reports',value:'Weekly'},{label:'Commodities',value:'25+'}], features:['Manufacturing PMI correlation analysis','Construction sector demand modeling','Automotive production impact forecasting','Infrastructure spending projection mapping','Seasonal demand pattern identification','Custom demand reports by sector and region'], useCases:['Commodity traders timing large purchase decisions','Manufacturers planning production schedules','Investors analyzing sector-wise commodity exposure','Export houses identifying emerging demand markets'], clients:'Demand intelligence adopted by strategic procurement teams at leading industrial conglomerates.'},
+};
+
+const supplyChainDetails: Record<string, DetailData> = {
+  'PROCUREMENT': { title:'Smart Procurement Management', icon:'\uD83E\uDD1D', accent:'green', overview:'Intelligent procurement orchestration connecting you with verified suppliers based on commodity, grade, volume, and delivery requirements. Automated RFQ management, quote comparison, and order confirmation workflows.', metrics:[{label:'Verified Suppliers',value:'500+'},{label:'RFQ Response Time',value:'< 4 hrs'},{label:'Cost Savings',value:'12\u201318%'},{label:'Order Accuracy',value:'99.2%'},{label:'Commodities',value:'50+'},{label:'Countries',value:'25+'}], features:['Multi-supplier RFQ broadcasting','Automated quote comparison matrix','Supplier rating and performance scoring','Contract template library with e-sign','Order confirmation and advance tracking','Procurement analytics dashboard'], useCases:['Bulk commodity buyers sourcing from multiple origins','First-time importers needing supplier verification','Procurement teams standardizing vendor evaluation','Emergency sourcing when primary suppliers default'], clients:'Procurement automation trusted by buying desks at Nestl\u00e9, HAVI, and leading FMCG manufacturers.'},
+  'INSPECTION': { title:'Quality Inspection & Verification', icon:'\uD83D\uDD0D', accent:'green', overview:'Coordinate pre-shipment inspections, lab testing, and grading through our network of 50+ NABL-accredited agencies. Ensure goods meet buyer specifications before they leave the origin.', metrics:[{label:'Agencies',value:'50+'},{label:'Lab Partners',value:'30+'},{label:'Turnaround',value:'48\u201372 hrs'},{label:'Parameters',value:'200+'},{label:'Pass Rate',value:'94%'},{label:'Coverage',value:'All India'}], features:['Pre-shipment inspection booking and scheduling','Certificate of Analysis coordination','Photo and video documentation at site','Digital inspection report delivery','Re-inspection and dispute mediation','Fumigation and phytosanitary certification'], useCases:['Buyers requiring PSI before payment release','Exporters demonstrating quality to overseas clients','New supplier qualification through sample testing','Insurance claims requiring inspection documentation'], clients:'Inspection coordination trusted by buyers at Nestl\u00e9, Mars, and top global commodity importers.'},
+  'DOCUMENTATION': { title:'Trade Documentation Automation', icon:'\uD83D\uDCC4', accent:'green', overview:'Auto-generate complete export/import documentation packs in under 3 minutes. 25+ document types with built-in compliance checklists for APEDA, FSSAI, customs, and destination country requirements.', metrics:[{label:'Doc Types',value:'25+'},{label:'Generation Time',value:'< 3 min'},{label:'Error Rate',value:'< 1%'},{label:'Templates',value:'50+'},{label:'Compliance',value:'100%'},{label:'Archive',value:'7 Years'}], features:['One-click complete document pack generation','Pre-filled templates from trade order data','APEDA/FSSAI/customs compliance auto-check','Digital signature and e-BL support','Version control with audit trail','Bulk generation for multi-consignment orders'], useCases:['Exporters automating repetitive documentation','First-time traders needing guided preparation','Banks requiring standardized LC documentation','Compliance teams ensuring zero-error filing'], clients:'Document automation saves 40+ hrs/month for export houses handling 20+ shipments monthly.'},
+  'LOGISTICS': { title:'Logistics & Freight Coordination', icon:'\uD83D\uDE9B', accent:'amber', overview:'Compare and book inland trucking, rail transport, and international ocean freight from a single interface. Access 150+ verified transport partners with real-time rates and capacity availability.', metrics:[{label:'Transport Partners',value:'150+'},{label:'Shipping Lines',value:'12+'},{label:'Route Coverage',value:'India + 40 countries'},{label:'Rate Updates',value:'Daily'},{label:'Booking Time',value:'< 3 min'},{label:'Cost Savings',value:'25%'}], features:['Inland truck and container rate comparison','Ocean FCL/LCL rate aggregation','Multi-modal route optimization','Real-time sailing schedule lookup','Digital booking and confirmation','Freight invoice reconciliation'], useCases:['Comparing inland freight from farm to nearest port','Booking ocean freight for bulk commodity exports','Multi-modal routing for landlocked origins','Consolidating LCL shipments for cost efficiency'], clients:'Logistics coordination used by exporters saving 25% on freight costs through platform rate comparison.'},
+  'LIVE TRACKING': { title:'Real-Time Shipment Tracking', icon:'\uD83D\uDCE1', accent:'blue', overview:'Track every shipment in real time from farm gate pickup through inland transit, port operations, ocean voyage, to destination delivery. GPS for trucks, AIS for vessels, with automated ETA updates.', metrics:[{label:'Tracking',value:'GPS + AIS'},{label:'Update Interval',value:'10 min'},{label:'Geofence Alerts',value:'Unlimited'},{label:'ETA Accuracy',value:'96%'},{label:'Vessel Coverage',value:'Global'},{label:'Visibility',value:'100%'}], features:['Real-time GPS truck tracking with driver contact','AIS-based ocean vessel location tracking','Automated ETA updates and delay notifications','Geofence entry/exit alerts','Multi-leg shipment visibility dashboard','Shareable tracking links for buyers'], useCases:['Buyers tracking perishable shipments in transit','Operations teams monitoring concurrent shipments','Sales teams sharing live tracking with customers','Risk teams getting early delay warnings'], clients:'Visibility solutions trusted by supply chain teams at Nestl\u00e9, HAVI, and Fortune 500 procurement divisions.'},
+  'DELIVERY': { title:'Delivery & Settlement', icon:'\uD83C\uDFC1', accent:'blue', overview:'Final-mile delivery coordination including destination port clearance, last-mile logistics, proof of delivery documentation, and trade settlement with automated payment milestone tracking.', metrics:[{label:'Delivery Success',value:'98.5%'},{label:'On-Time Rate',value:'94%'},{label:'Settlement Speed',value:'T+3 days'},{label:'Dispute Rate',value:'< 2%'},{label:'Ports Covered',value:'50+'},{label:'Payment Modes',value:'LC/TT/DA/DP'}], features:['Destination port customs clearance coordination','Last-mile delivery scheduling and tracking','Proof of delivery documentation','Automated payment milestone triggers','Trade settlement reconciliation','Post-delivery quality feedback loop'], useCases:['Importers coordinating destination port clearance','Exporters confirming delivery for payment release','Finance teams tracking trade settlement milestones','Customer success teams ensuring delivery satisfaction'], clients:'End-to-end delivery management trusted by enterprise trade operations across 40+ countries.'},
+};
+
+const freightInlandDetails: Record<string, DetailData> = {
+  'Truck & Container Booking': { title:'Truck & Container Booking', icon:'\uD83D\uDE9B', accent:'green', overview:'Compare available trucks, mini-trucks, 20ft/40ft containers, and open-top trailers from verified transport partners across Andhra Pradesh, Telangana, Tamil Nadu, Karnataka, and Maharashtra.', metrics:[{label:'Transport Partners',value:'80+'},{label:'Vehicle Types',value:'15+'},{label:'Coverage',value:'Pan-India'},{label:'Booking Speed',value:'< 10 min'},{label:'GPS Tracked',value:'100%'},{label:'Rate Updates',value:'Daily'}], features:['Multi-vehicle type comparison and booking','Verified transporter profiles with ratings','Real-time vehicle availability check','Automated route and cost optimization','Digital booking confirmation and POD','Insurance and transit coverage options'], useCases:['Farm-to-port container movement for agri exports','Factory-to-CFS trucking for industrial goods','Multi-point pickup consolidation','Urgent last-minute vehicle requirement'], clients:'Inland transport booking trusted by 200+ exporters across South India.'},
+  'Warehouse Locator': { title:'Warehouse & Cold Storage Locator', icon:'\uD83C\uDFEA', accent:'amber', overview:'Find bonded warehouses, cold storage facilities, and fumigation centers near your origin or port. Compare capacity, certifications, temperature range, and daily storage rates.', metrics:[{label:'Warehouses',value:'120+'},{label:'Cold Storages',value:'45+'},{label:'Ports Covered',value:'12'},{label:'Certifications',value:'FSSAI/APEDA'},{label:'Booking',value:'Online'},{label:'Rate Comparison',value:'Instant'}], features:['Search by location, capacity, and type','Cold storage temperature range filtering','FSSAI and APEDA certification verification','Real-time capacity availability','Online booking and payment','Storage rate comparison across facilities'], useCases:['Agri exporters needing cold storage near port','Importers requiring bonded warehouse space','Seasonal storage for harvest period commodities','Fumigation center booking before export'], clients:'Warehouse solutions used by exporters managing perishable commodity storage across Indian ports.'},
+  'Inland Freight Rate Board': { title:'Inland Freight Rate Board', icon:'\uD83D\uDCB9', accent:'green', overview:'Live freight rates from origin to nearest railhead, port, CFS, or ICD updated daily by lane. Compare truck, rail, and multi-modal options for optimal cost and transit time.', metrics:[{label:'Trade Lanes',value:'200+'},{label:'Update Freq',value:'Daily'},{label:'Savings',value:'15\u201325%'},{label:'Modes',value:'Truck/Rail/Multi'},{label:'Rate History',value:'12 months'},{label:'Partners',value:'60+'}], features:['Lane-wise daily rate updates','Truck vs rail cost comparison','Multi-modal routing with time estimates','Seasonal rate trend analysis','Bulk booking discount visibility','Rate lock for advance bookings'], useCases:['Exporters comparing farm-to-port freight options','Cost optimization for high-volume commodity movement','Planning quarterly logistics budgets','Identifying cheapest lanes for new trade routes'], clients:'Rate intelligence used by logistics planners at major Indian commodity trading houses.'},
+  'GPS Tracking Dashboard': { title:'GPS Tracking Dashboard', icon:'\uD83D\uDCE1', accent:'blue', overview:'Real-time GPS tracking for every inland shipment with live map view, geofence alerts, driver contact information, and automated ETA updates visible to both buyer and seller.', metrics:[{label:'Vehicles Tracked',value:'500+/month'},{label:'Update Interval',value:'2 min'},{label:'Geofences',value:'Unlimited'},{label:'ETA Accuracy',value:'93%'},{label:'Alert Channels',value:'SMS/Email/WA'},{label:'Map Coverage',value:'Pan-India'}], features:['Live map view with vehicle positions','Geofence entry/exit notifications','Driver contact and SOS alerts','Automated ETA calculation and updates','Route deviation detection','Trip history and analytics'], useCases:['Monitoring perishable cargo in transit','Multi-vehicle fleet visibility for consolidation','Providing real-time updates to overseas buyers','Detecting route deviations or unauthorized stops'], clients:'GPS tracking adopted by exporters requiring full inland visibility for compliance and buyer confidence.'},
+  'Port Gate-In Assistance': { title:'Port Gate-In Assistance', icon:'\uD83C\uDFD7\uFE0F', accent:'amber', overview:'Coordinate port delivery orders, weighbridge appointments, port health clearances, and container stuffing at CFS/ICD. Digital tracking of all port-side processes with real-time status updates.', metrics:[{label:'Ports Covered',value:'12+'},{label:'CFS/ICD',value:'30+'},{label:'Process Steps',value:'8'},{label:'Digital Tracking',value:'100%'},{label:'Turnaround',value:'24\u201348 hrs'},{label:'Success Rate',value:'97%'}], features:['Port delivery order management','Weighbridge appointment scheduling','Port health clearance coordination','Container stuffing supervision','CFS/ICD gate-in tracking','Digital documentation for all processes'], useCases:['First-time exporters navigating port procedures','Coordinating container stuffing at CFS','Scheduling weighbridge for overweight cargo','Port health clearance for food commodities'], clients:'Port assistance used by exporters shipping from Kakinada, Vizag, Chennai, and Mundra ports.'},
+};
+
+const freightOverseasDetails: Record<string, DetailData> = {
+  'Freight Rate Comparison': { title:'Ocean Freight Rate Comparison', icon:'\u2696\uFE0F', accent:'blue', overview:'Compare FCL and LCL rates from 12+ shipping lines including Maersk, MSC, CMA CGM, Hapag-Lloyd, and ONE on all major trade lanes from Indian ports to global destinations.', metrics:[{label:'Shipping Lines',value:'12+'},{label:'Trade Lanes',value:'60+'},{label:'Rate Updates',value:'Daily'},{label:'Savings',value:'15\u201330%'},{label:'Container Types',value:'20ft/40ft/HC/RF'},{label:'Booking Speed',value:'< 5 min'}], features:['Multi-carrier rate comparison matrix','FCL and LCL rate aggregation','Detention and demurrage fee visibility','BAF/CAF/THC surcharge breakdown','Rate trend analysis by trade lane','Instant digital booking confirmation'], useCases:['Exporters comparing rates for upcoming shipments','Procurement teams building annual freight budgets','Spot rate negotiation with market data backup','LCL consolidation for small volume shippers'], clients:'Freight comparison used by 300+ active shippers saving an average 20% on ocean freight costs.'},
+  'Vessel & Sailing Schedule': { title:'Vessel & Sailing Schedule', icon:'\uD83D\uDCC5', accent:'green', overview:'Check real-time sailing schedules, transit times, vessel ETD/ETA from all major Indian ports to 200+ destination ports worldwide. Filter by shipping line, transit time, and transshipment options.', metrics:[{label:'Origin Ports',value:'12+'},{label:'Destinations',value:'200+'},{label:'Schedule Updates',value:'Real-time'},{label:'Shipping Lines',value:'15+'},{label:'Transit Options',value:'Direct/TS'},{label:'Data Source',value:'Carrier APIs'}], features:['Real-time sailing schedule search','Direct vs transshipment route comparison','Transit time calculator with port pair','Vessel details and capacity information','Schedule change alerts and notifications','Weekly schedule download in PDF/Excel'], useCases:['Exporters planning shipment timing around sailing schedules','Logistics teams coordinating cargo readiness with ETD','Buyers estimating arrival dates for production planning','Freight forwarders comparing routing options'], clients:'Sailing schedule data used by exporters planning 1,000+ container movements annually from Indian ports.'},
+  'Freight Forwarder Connect': { title:'Freight Forwarder Connect', icon:'\uD83E\uDD1D', accent:'amber', overview:'Access vetted freight forwarders, NVOCCs, and customs brokers for sea, air, and multimodal cargo. Each partner is verified with trade history, specialization, and customer ratings.', metrics:[{label:'Forwarders',value:'60+'},{label:'Specializations',value:'Sea/Air/Multi'},{label:'Coverage',value:'40+ countries'},{label:'Avg Rating',value:'4.5/5'},{label:'Response Time',value:'< 2 hrs'},{label:'Verified',value:'100%'}], features:['Verified forwarder directory with ratings','Specialization-based search and matching','Direct RFQ broadcasting to forwarders','Quote comparison with service level details','Performance tracking and reviews','Dispute resolution support'], useCases:['Shippers finding specialized DG cargo forwarders','First-time exporters needing full-service forwarders','Comparing forwarder quotes for large tenders','Building reliable forwarder partnerships for regular trade'], clients:'Forwarder network trusted by shippers handling complex multi-modal and project cargo movements.'},
+  'Live AIS Vessel Tracking': { title:'Live AIS Vessel Tracking', icon:'\uD83D\uDEF0\uFE0F', accent:'blue', overview:'Real-time AIS-based vessel tracking showing exact position, speed, heading, and estimated arrival time for your ocean cargo. Interactive map with port-to-port route visualization.', metrics:[{label:'Vessels Tracked',value:'Global Fleet'},{label:'Update Interval',value:'5 min'},{label:'Map Coverage',value:'Worldwide'},{label:'Port Data',value:'500+'},{label:'Alert Types',value:'ETA/Delay/Arrive'},{label:'Share Links',value:'Unlimited'}], features:['Interactive vessel position map','Port-to-port route visualization','ETA calculation with weather adjustments','Port congestion and delay indicators','Automated arrival/departure notifications','Shareable tracking dashboards for buyers'], useCases:['Buyers monitoring time-sensitive cargo on ocean','Operations teams tracking multiple vessels','Sales teams providing delivery updates to clients','Finance teams planning around vessel arrival for LC'], clients:'AIS tracking integrated by shippers managing global supply chains with real-time ocean visibility.'},
+  'BL & Shipping Documents': { title:'Bill of Lading & Shipping Documents', icon:'\uD83D\uDCCB', accent:'green', overview:'Digital Bill of Lading issuance coordination including original BL, telex release, sea waybill, and e-BL support. Integrated document courier tracking and bank submission management.', metrics:[{label:'BL Types',value:'OBL/Telex/e-BL/SWB'},{label:'Processing',value:'< 24 hrs'},{label:'Courier Tracking',value:'Real-time'},{label:'Bank Submission',value:'Guided'},{label:'Archive',value:'7 Years'},{label:'Digital %',value:'80%'}], features:['Original BL draft review and approval','Telex release coordination','e-BL digital issuance support','Shipping document courier tracking','Bank document submission guidance','Secure digital archival with access control'], useCases:['Exporters managing BL issuance with shipping lines','Banks requiring original documents for LC negotiation','Importers coordinating telex release for cargo pickup','Finance teams tracking document courier status'], clients:'BL management used by trading houses processing 500+ Bills of Lading annually.'},
+};
+
+const documentationDetails: Record<string, DetailData> = {
+  'PROCUREMENT DOCS': { title:'Procurement Documentation Suite', icon:'\uD83D\uDCDD', accent:'green', overview:'Complete procurement document management from Purchase Order creation to Letter of Credit guidance. Auto-generate POs, proforma invoices, sales contracts, and LOIs with pre-filled templates from your trade data.', metrics:[{label:'Document Types',value:'8+'},{label:'Generation Time',value:'< 2 min'},{label:'Templates',value:'25+'},{label:'LC Guidance',value:'Step-by-step'},{label:'E-Signature',value:'Supported'},{label:'Compliance',value:'100%'}], features:['Auto-generated Purchase Orders from trade enquiry','Proforma Invoice templates with Incoterms','Sales Contract drafting with legal review','Letter of Intent generation and tracking','Letter of Credit guidance and checklist','Amendment tracking and version control'], useCases:['Buyers issuing POs to verified suppliers','Exporters preparing proforma invoices for quotation','First-time traders needing LC guidance','Legal teams reviewing contract terms before signing'], clients:'Procurement documentation used by buying teams managing multi-supplier, multi-origin trade orders.'},
+  'QUALITY & INSPECTION': { title:'Quality & Inspection Documents', icon:'\uD83D\uDD0D', accent:'amber', overview:'Coordinate all quality-related documentation including PSI reports, Certificates of Analysis, Phytosanitary certificates, Fumigation certificates, and laboratory test reports. One-click scheduling with our network of 50+ accredited agencies.', metrics:[{label:'Cert Types',value:'10+'},{label:'Lab Partners',value:'30+'},{label:'Turnaround',value:'48\u201372 hrs'},{label:'Accreditation',value:'NABL/ILAC'},{label:'Digital Delivery',value:'100%'},{label:'Re-inspection',value:'Free'}], features:['Pre-Shipment Inspection scheduling and tracking','Certificate of Analysis from accredited labs','Phytosanitary certificate coordination with NPPO','Fumigation certificate with MB/PH3 options','Lab test report management and archival','Digital certificate delivery to all parties'], useCases:['Exporters needing phytosanitary for EU/US markets','Buyers requiring COA before payment release','Quality disputes needing third-party verification','New product certification for market entry'], clients:'Quality documentation trusted by inspection and compliance teams at global food and commodity companies.'},
+  'SHIPPING DOCUMENTS': { title:'Shipping Document Pack', icon:'\uD83D\uDEA2', accent:'blue', overview:'Generate complete shipping document packs including Bill of Lading, Packing List, Commercial Invoice, Certificate of Origin, and freight/insurance documents. All pre-filled from your confirmed trade order.', metrics:[{label:'Document Types',value:'12+'},{label:'Pack Generation',value:'< 3 min'},{label:'Error Rate',value:'< 0.5%'},{label:'e-BL Support',value:'Yes'},{label:'COO Types',value:'Preferential/Non-Pref'},{label:'Archive',value:'7 Years'}], features:['Bill of Lading draft preparation and review','Packing List with container stuffing details','Commercial Invoice with HS code classification','Certificate of Origin (preferential and non-preferential)','Freight and insurance document coordination','Consolidated document pack PDF generation'], useCases:['Exporters preparing document sets for LC negotiation','Shipping teams coordinating BL with freight forwarders','Banks verifying document compliance for LC payment','Importers receiving complete document packs digitally'], clients:'Shipping document automation saves 30+ hrs/month for active export houses.'},
+  'CUSTOMS & REGULATORY': { title:'Customs & Regulatory Compliance', icon:'\u2696\uFE0F', accent:'orange', overview:'Full customs compliance support including Shipping Bill filing, HS code classification, APEDA/FSSAI registration guidance, IEC code assistance, and port health clearance coordination.', metrics:[{label:'HS Codes',value:'5,000+'},{label:'Filing Speed',value:'< 1 hr'},{label:'Accuracy',value:'99.5%'},{label:'Regulations',value:'Indian + Global'},{label:'Registration Types',value:'8+'},{label:'Support',value:'24x7'}], features:['Shipping Bill / Bill of Entry preparation','HS code classification with duty estimation','APEDA RCMC registration and renewal guidance','FSSAI license application support','IEC code registration assistance','Port health and fumigation NOC coordination'], useCases:['First-time exporters navigating customs procedures','Importers filing Bill of Entry for clearance','Companies needing APEDA/FSSAI registration','Customs duty estimation for new trade routes'], clients:'Customs compliance trusted by 400+ registered exporters and import houses across India.'},
+};
+
+const innovationDetails: Record<string, DetailData> = {
+  'Unified Agri + Industrial Platform': { title:'Unified Agri + Industrial Platform', icon:'\uD83C\uDF10', accent:'green', overview:'No existing platform combines agricultural and industrial commodity trading, compliance, freight, and live pricing in a single UX. TradeFokus is the first platform to unify both verticals with shared infrastructure for documentation, logistics, and market intelligence.', metrics:[{label:'Commodity Types',value:'Agri + Industrial'},{label:'Verticals Combined',value:'2-in-1'},{label:'Services Unified',value:'6+'},{label:'Market Coverage',value:'50+ commodities'},{label:'User Types',value:'Buyer/Seller/Agent'},{label:'Industry First',value:'Yes'}], features:['Single dashboard for agri and industrial commodities','Shared documentation and compliance engine','Unified freight booking across both verticals','Cross-vertical market intelligence','Common buyer-seller matching algorithm','Integrated payment and settlement system'], useCases:['Conglomerates trading both agri and industrial commodities','Export houses with diversified commodity portfolios','Trading companies seeking operational consolidation','Investors monitoring cross-commodity opportunities'], clients:'Platform consolidation adopted by multi-commodity trading houses seeking operational efficiency.'},
+  'Farm-to-Port Visibility': { title:'Farm-to-Port End-to-End Visibility', icon:'\uD83D\uDE80', accent:'green', overview:'Track commodities from farm gate pickup through inland transit, CFS stuffing, vessel departure, to destination port arrival. No other Indian B2B commodity platform offers this level of origin-to-destination traceability.', metrics:[{label:'Tracking Stages',value:'6'},{label:'GPS + AIS',value:'Combined'},{label:'Visibility',value:'100%'},{label:'Update Interval',value:'10 min'},{label:'Alert Types',value:'12+'},{label:'Industry First',value:'Yes'}], features:['Farm gate pickup confirmation with photo proof','Inland GPS tracking with geofence alerts','CFS/ICD stuffing supervision documentation','Port gate-in and vessel loading confirmation','Ocean voyage AIS tracking','Destination port arrival notification'], useCases:['Premium buyers requiring origin traceability','Organic certification requiring chain-of-custody proof','Insurance companies tracking cargo throughout transit','Regulatory bodies verifying commodity movement'], clients:'Farm-to-port visibility demanded by premium buyers at Nestl\u00e9, Whole Foods, and EU organic importers.'},
+  'Broker Intelligence Layer': { title:'Proprietary Broker Intelligence Layer', icon:'\uD83E\uDDE0', accent:'amber', overview:'In-house brokerage intelligence powers smart buyer-seller matching based on commodity type, grade, volume, delivery preference, trade history, and creditworthiness. Unlike generic marketplaces, our matching considers real trade execution data.', metrics:[{label:'Data Points',value:'50+ per match'},{label:'Match Accuracy',value:'91%'},{label:'Trade History',value:'3 Years'},{label:'Credit Score',value:'Integrated'},{label:'Success Rate',value:'89%'},{label:'Proprietary',value:'Yes'}], features:['Multi-dimensional matching algorithm','Trade history-weighted scoring','Credit risk pre-assessment','Volume capacity verification','Delivery preference matching','Real-time match quality scoring'], useCases:['Buyers finding ideal suppliers for specific grades','Suppliers identifying high-value repeat buyers','Risk teams pre-screening new trading partners','Brokers optimizing their network connections'], clients:'Intelligence layer powering 500+ successful buyer-supplier matches annually.'},
+  'AI Harvest & Price Forecasting': { title:'AI Harvest & Price Forecasting', icon:'\uD83E\uDD16', accent:'blue', overview:'30\u201390 day price and supply forecasting using satellite imagery, APMC arrival data, weather models, and historical trade volumes. Help buyers lock prices early and sellers time their sales optimally.', metrics:[{label:'Forecast Horizon',value:'30\u201390 days'},{label:'Accuracy',value:'87%'},{label:'Satellite Data',value:'Weekly'},{label:'APMC Sources',value:'500+ mandis'},{label:'Weather Models',value:'3'},{label:'Reports',value:'Bi-weekly'}], features:['Satellite-based crop health monitoring','APMC arrival trend forecasting','Weather-adjusted yield prediction','Price direction with confidence intervals','Regional supply surplus/deficit mapping','Actionable advisory reports'], useCases:['Buyers planning forward purchases at optimal prices','Farmers deciding best time to sell harvest','Export houses timing shipments with supply windows','Investors tracking agricultural commodity cycles'], clients:'AI forecasting adopted by strategic sourcing at Nestl\u00e9, HAVI, and top-5 Indian commodity exporters.'},
+  'Live Freight Rate Comparison': { title:'Live Freight Rate Comparison Engine', icon:'\u26A1', accent:'orange', overview:'Compare inland truck rates AND ocean freight rates in real time from within the trade enquiry flow. Save hours of manual coordination by getting instant freight cost estimates alongside commodity pricing.', metrics:[{label:'Rate Sources',value:'200+'},{label:'Modes',value:'Truck/Rail/Ocean'},{label:'Update Freq',value:'Daily'},{label:'Time Saved',value:'80%'},{label:'Cost Savings',value:'15\u201325%'},{label:'In-flow',value:'Yes'}], features:['Integrated freight cost in trade enquiry','Truck + ocean rate comparison in one view','Multi-modal routing with time-cost tradeoff','Historical rate trend charts','Rate alert notifications','Bulk booking discount visibility'], useCases:['Traders calculating total landed cost instantly','Procurement teams comparing CIF vs FOB options','Logistics managers optimizing shipping routes','Finance teams forecasting trade cost accurately'], clients:'Integrated rate engine saves 4+ hours per trade enquiry for active commodity traders.'},
+  'One-Click Document Pack': { title:'One-Click Document Pack Generation', icon:'\uD83D\uDCC4', accent:'blue', overview:'Generate a complete shipment document pack from a single confirmed order \u2014 Commercial Invoice, Packing List, COA, BL draft, Shipping Bill \u2014 all in under 3 minutes with 99%+ accuracy.', metrics:[{label:'Documents',value:'15+ per pack'},{label:'Time',value:'< 3 min'},{label:'Accuracy',value:'99.2%'},{label:'Templates',value:'50+'},{label:'Compliance',value:'Auto-checked'},{label:'Archive',value:'7 Years'}], features:['Single-click complete document generation','Pre-filled from confirmed trade order data','Automatic compliance verification','Multi-format output (PDF/Word/Excel)','Digital signature integration','Bulk generation for multi-consignment'], useCases:['High-volume exporters automating documentation','First-time traders generating compliant documents','Banks receiving standardized document packs','Customs brokers filing with pre-verified data'], clients:'One-click docs used by export houses processing 50+ document packs monthly.'},
+};
+
 
 const WA = 'https://wa.me/918838442155';
 
@@ -306,8 +381,8 @@ export default function Home() {
         </div>
 
         {/* FLOATING WHATSAPP BUTTON */}
-        <a href={WA} target="_blank" rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl font-black text-sm hover:scale-110 transition-transform anim-glow">
+        <a href={`${WA}?text=${encodeURIComponent("Hi TradeFokus! I visited your website and I'm interested in exploring your commodity trading platform. Please share more details.")}`} target="_blank" rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl font-black text-sm hover:scale-110 transition-transform anim-glow shadow-[0_0_20px_rgba(37,211,102,0.4)]">
           <span className="text-xl leading-none">&#x1F4F1;</span>
           Chat on WhatsApp
         </a>
@@ -319,7 +394,7 @@ export default function Home() {
               <div className="flex items-center justify-between h-16">
                 <button onClick={() => scrollTo('hero')} className="flex items-center hover:opacity-80 transition">
                   <span className="text-2xl font-black text-white tracking-tight">Trade</span>
-                  <span className="text-2xl font-black text-green-400 tracking-tight">Fokus</span>
+                  <span className="text-2xl font-black text-green-400 tracking-tight" style={{ textShadow: '0 0 15px rgba(34,197,94,0.5)' }}>Fokus</span>
                 </button>
                 <div className="hidden lg:flex items-center gap-7 text-sm font-medium">
                   <button onClick={() => scrollTo('hero')} className="text-gray-400 hover:text-green-400 transition">Home</button>
@@ -367,7 +442,7 @@ export default function Home() {
                   <button onClick={() => scrollTo('about')} className="text-gray-400 hover:text-green-400 transition">About</button>
                 </div>
                 <div className="flex items-center gap-3">
-                  <a href={WA} target="_blank" rel="noopener noreferrer"
+                  <a href={`${WA}?text=${encodeURIComponent("Hi TradeFokus! I'd like to discuss commodity trading opportunities. Please connect me with your team.")}`} target="_blank" rel="noopener noreferrer"
                     className="hidden sm:flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded-full text-xs font-bold hover:bg-[#1fbb59] transition">
                     &#x1F4F1; WhatsApp
                   </a>
@@ -399,6 +474,36 @@ export default function Home() {
 
           {/* HERO */}
           <section id="hero" className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            {/* Animated Globe Background */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/4 lg:translate-x-0 pointer-events-none opacity-20 lg:opacity-30">
+              <div className="relative w-[500px] h-[500px] lg:w-[600px] lg:h-[600px]">
+                {/* Globe circle */}
+                <div className="absolute inset-0 rounded-full border-2 border-green-500/30 anim-spinGlobe">
+                  <div className="absolute inset-4 rounded-full border border-green-500/20" />
+                  <div className="absolute inset-8 rounded-full border border-blue-500/15" />
+                  {/* Latitude lines */}
+                  <div className="absolute top-1/4 left-0 right-0 border-t border-green-500/10" />
+                  <div className="absolute top-1/2 left-0 right-0 border-t border-green-400/20" />
+                  <div className="absolute top-3/4 left-0 right-0 border-t border-green-500/10" />
+                  {/* Longitude arcs */}
+                  <div className="absolute inset-0 rounded-full border border-green-500/10" style={{ transform: 'rotateY(60deg)' }} />
+                  <div className="absolute inset-0 rounded-full border border-amber-500/10" style={{ transform: 'rotateY(-60deg)' }} />
+                </div>
+                {/* Orbiting dots */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="anim-orbit1"><div className="w-3 h-3 bg-green-400 rounded-full shadow-[0_0_12px_rgba(34,197,94,0.8)]" /></div>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="anim-orbit2"><div className="w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]" /></div>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="anim-orbit3"><div className="w-2.5 h-2.5 bg-amber-400 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.8)]" /></div>
+                </div>
+                {/* Neon glow center */}
+                <div className="absolute inset-[30%] rounded-full bg-green-500/10 neon-glow" />
+              </div>
+            </div>
+            {/* Trade route SVG paths */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M-50,200 Q350,80 750,280 T1700,220" stroke="#22c55e" strokeWidth="1.5" fill="none" strokeDasharray="7 5" className="anim-fadeRoute" style={{ animationDelay: '0s' }} />
               <path d="M-50,360 Q300,200 700,400 T1700,360" stroke="#3b82f6" strokeWidth="1" fill="none" strokeDasharray="5 9" className="anim-fadeRoute" style={{ animationDelay: '0.8s' }} />
@@ -425,7 +530,7 @@ export default function Home() {
                   <p className="text-base text-green-400 font-semibold mb-6 min-h-[1.5rem]">
                     {typeText}<span className="text-green-300 animate-pulse">|</span>
                   </p>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-lg">
                     A next-generation commodity trading platform bridging buyers and suppliers — farmers, producers, mills, manufacturers — with complete end-to-end trade facilitation under one roof.
                   </p>
                   {/* Live trade activity feed */}
@@ -437,7 +542,7 @@ export default function Home() {
                     <div className={`transition-all duration-300 ${actVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
                       <p className="text-green-400 text-xs font-black tracking-widest mb-0.5">LIVE TRADE ACTIVITY</p>
                       <p className="text-white text-sm font-semibold">{tradeActivities[liveActivity].flag} {tradeActivities[liveActivity].text}</p>
-                      <p className="text-gray-600 text-xs mt-0.5">{tradeActivities[liveActivity].time}</p>
+                      <p className="text-gray-400 text-xs mt-0.5">{tradeActivities[liveActivity].time}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-4">
@@ -505,7 +610,7 @@ export default function Home() {
               ].map(({ val, label }, i) => (
                 <div key={i} className="group cursor-default">
                   <div className="text-3xl font-black text-green-400 group-hover:scale-110 transition-transform tabular-nums"
-                    style={{ textShadow: '0 0 20px rgba(34,197,94,0.4)' }}>{val}</div>
+                    style={{ textShadow: '0 0 20px rgba(34,197,94,0.6), 0 0 40px rgba(34,197,94,0.3)' }}>{val}</div>
                   <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">{label}</div>
                 </div>
               ))}
@@ -539,27 +644,60 @@ export default function Home() {
             </div>
           </div>
 
-          {/* WHAT IS TRADEFOKUS */}
+          {/* PLATFORM HIGHLIGHTS + WHAT IS TRADEFOKUS - Side by Side */}
           <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-black mb-3">WHAT IS TRADEFOKUS?</h2>
-              <p className="text-gray-500 max-w-3xl mb-12 text-sm leading-relaxed">
-                A next-generation commodity trading platform bridging buyers and suppliers &mdash; farmers, producers, mills, manufacturers &mdash; with complete end-to-end trade facilitation under one roof.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+                {/* Left: What Is TradeFokus */}
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-black mb-3" style={{ textShadow: '0 0 30px rgba(34,197,94,0.2)' }}>WHAT IS TRADEFOKUS?</h2>
+                  <p className="text-gray-300 mb-8 text-sm leading-relaxed">
+                    A next-generation commodity trading platform bridging buyers and suppliers &mdash; farmers, producers, mills, manufacturers &mdash; with complete end-to-end trade facilitation under one roof.
+                  </p>
+                  <div className="space-y-4">
+                    {[
+                      ['🌐', 'Live Market Prices – Agri & Non-Agri'],
+                      ['📦', 'Full Supply Chain Management'],
+                      ['🚂', 'Inland & International Freight Listing'],
+                      ['📡', 'Real-Time Shipment Tracking'],
+                      ['📄', 'End-to-End Trade Documentation'],
+                      ['🔍', 'Quality Inspection Coordination'],
+                      ['🤖', 'AI Supply & Demand Predictions'],
+                      ['🤝', 'Verified Buyer–Supplier Matching'],
+                    ].map(([icon, text], i) => (
+                      <button key={i}
+                        onClick={() => openDetail(text as string, platformDetails)}
+                        className="flex items-center gap-3 group cursor-pointer w-full text-left hover:bg-green-900/20 rounded-lg px-3 py-2 transition border border-transparent hover:border-green-800/30"
+                        style={{ animation: `fadeSlideUp 0.5s ease ${i * 0.06}s both` }}>
+                        <span className="text-lg transition-transform group-hover:scale-125">{icon}</span>
+                        <span className="text-gray-300 text-sm transition-colors group-hover:text-green-400 flex-1">{text}</span>
+                        <span className="text-green-500/0 group-hover:text-green-400 text-xs transition-all">Details &rarr;</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {/* Right: 3 Key Pillars */}
+                <div className="flex flex-col justify-center">
+                  <p className="text-green-400 text-xs font-black tracking-widest uppercase mb-6">HOW IT WORKS</p>
+                  <div className="space-y-6">
                 {[
                   { label: 'CONNECT',    border: 'border-green-600', bg: 'bg-green-900/40', color: 'text-green-300', icon: '🔗', delay: '0s',   desc: 'Match verified buyers with trusted suppliers, farmers & producers globally.' },
                   { label: 'FACILITATE', border: 'border-amber-600', bg: 'bg-amber-900/20', color: 'text-amber-300', icon: '\u2699\uFE0F', delay: '1.2s', desc: 'Manage documentation, inspections, freight, and compliance in one platform.' },
                   { label: 'DELIVER',    border: 'border-green-400', bg: 'bg-green-800/30', color: 'text-green-200', icon: '🚢', delay: '2.4s', desc: 'Track real-time shipment from source to port or final destination.' },
                 ].map((item, i) => (
-                  <div key={i} className={`relative border-2 ${item.border} ${item.bg} rounded-xl p-8 hover:scale-105 transition-transform group cursor-default`}>
-                    {i > 0 && <span className="hidden md:block absolute -left-5 top-1/2 -translate-y-1/2 text-amber-500 text-2xl font-black">&rarr;</span>}
-                    <span className="text-4xl mb-3 block anim-floatY" style={{ animationDelay: item.delay }}>{item.icon}</span>
-                    <h3 className={`text-xl font-black tracking-widest ${item.color} mb-3`}>{item.label}</h3>
-                    <div className="w-10 h-0.5 bg-green-700 mb-4 group-hover:w-20 transition-all duration-500" />
-                    <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
+                    <div key={i} className={`relative border-2 ${item.border} ${item.bg} rounded-xl p-6 hover:scale-[1.02] transition-transform group cursor-default`}>
+                      <div className="flex items-center gap-4">
+                        <span className="text-3xl anim-floatY flex-shrink-0" style={{ animationDelay: item.delay }}>{item.icon}</span>
+                        <div>
+                          <h3 className={`text-lg font-black tracking-widest ${item.color} mb-1`}>{item.label}</h3>
+                          <div className="w-10 h-0.5 bg-green-700 mb-2 group-hover:w-20 transition-all duration-500" />
+                          <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </section>
@@ -570,7 +708,7 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
                 <div className="lg:col-span-2 bg-[#0d1f0d] border border-green-800/40 rounded-2xl p-8">
                   <h2 className="text-5xl font-black text-white leading-none">AGRI</h2>
-                  <h2 className="text-5xl font-black text-green-400 leading-none mb-2">COMMODITIES</h2>
+                  <h2 className="text-5xl font-black text-green-400 leading-none mb-2" style={{ textShadow: '0 0 30px rgba(34,197,94,0.4)' }}>COMMODITIES</h2>
                   <p className="text-green-400 italic text-sm mb-8">Farm-Fresh. Compliant. Delivered.</p>
                   <div className="space-y-3">
                     {[
@@ -603,13 +741,13 @@ export default function Home() {
                       <button key={i} onClick={() => openDetail(item.t, agriFeatureDetails)}
                         className="border border-green-800/25 rounded-xl p-5 hover:border-green-500/50 hover:bg-green-900/15 hover:-translate-y-1 transition group cursor-pointer text-left">
                         <h4 className="text-green-300 font-bold text-sm mb-2 group-hover:text-green-200">{item.t}</h4>
-                        <p className="text-gray-600 text-xs leading-relaxed mb-2">{item.d}</p>
+                        <p className="text-gray-300 text-xs leading-relaxed mb-2">{item.d}</p>
                         <span className="text-green-500/0 group-hover:text-green-500 text-xs font-bold transition-all">Click for details &rarr;</span>
                       </button>
                     ))}
                     <div className="sm:col-span-2 border border-amber-700/30 rounded-xl p-5 hover:bg-amber-900/10 hover:-translate-y-1 transition cursor-default">
                       <h4 className="text-amber-400 font-bold text-sm mb-1">APEDA / FSSAI Compliance Guide</h4>
-                      <p className="text-gray-600 text-xs leading-relaxed">Step-by-step regulatory checklist for each commodity export.</p>
+                      <p className="text-gray-300 text-xs leading-relaxed">Step-by-step regulatory checklist for each commodity export.</p>
                     </div>
                   </div>
                 </div>
@@ -634,18 +772,18 @@ export default function Home() {
                     ].map((item, i) => (
                       <div key={i} className="border border-blue-800/25 rounded-xl p-5 hover:border-blue-400/40 hover:bg-blue-900/10 hover:-translate-y-1 transition group cursor-default">
                         <h4 className="text-blue-300 font-bold text-sm mb-2 group-hover:text-blue-200">{item.t}</h4>
-                        <p className="text-gray-600 text-xs leading-relaxed">{item.d}</p>
+                        <p className="text-gray-300 text-xs leading-relaxed">{item.d}</p>
                       </div>
                     ))}
                     <div className="sm:col-span-2 border border-amber-700/30 rounded-xl p-5 hover:bg-amber-900/10 hover:-translate-y-1 transition cursor-default">
                       <h4 className="text-amber-400 font-bold text-sm mb-1">Port & Customs Assistance</h4>
-                      <p className="text-gray-600 text-xs leading-relaxed">Port clearance docs, HS code filing, and customs agent directory.</p>
+                      <p className="text-gray-300 text-xs leading-relaxed">Port clearance docs, HS code filing, and customs agent directory.</p>
                     </div>
                   </div>
                 </div>
                 <div className="lg:col-span-2 bg-[#0d1525] border border-blue-800/40 rounded-2xl p-8 order-1 lg:order-2">
                   <h2 className="text-5xl font-black text-white leading-none">NON-AGRI</h2>
-                  <h2 className="text-5xl font-black text-blue-400 leading-none mb-2">COMMODITIES</h2>
+                  <h2 className="text-5xl font-black text-blue-400 leading-none mb-2" style={{ textShadow: '0 0 30px rgba(59,130,246,0.4)' }}>COMMODITIES</h2>
                   <p className="text-blue-400 italic text-sm mb-8">Industrial-Grade. Globally Sourced.</p>
                   <div className="space-y-3">
                     {[
@@ -672,7 +810,7 @@ export default function Home() {
           <section id="supply-chain" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a1a0a]">
             <div className="max-w-7xl mx-auto">
               <div className="bg-[#162616] rounded-t-2xl px-8 py-5">
-                <h2 className="text-xl md:text-2xl font-black">END-TO-END SUPPLY CHAIN MANAGEMENT</h2>
+                <h2 className="text-xl md:text-2xl font-black" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>END-TO-END SUPPLY CHAIN MANAGEMENT</h2>
               </div>
               <div className="bg-white/5 border border-t-0 border-green-900/20 rounded-b-2xl p-8">
                 <div className="relative">
@@ -687,14 +825,16 @@ export default function Home() {
                       { num: '05', label: 'LIVE TRACKING', color: 'bg-orange-600', ring: 'ring-orange-400', icon: '📡' },
                       { num: '06', label: 'DELIVERY',      color: 'bg-blue-800',   ring: 'ring-blue-500',   icon: '🏁' },
                     ].map((step, i) => (
-                      <div key={i} className="text-center group cursor-default"
+                      <button key={i} onClick={() => openDetail(step.label, supplyChainDetails)}
+                        className="text-center group cursor-pointer"
                         style={{ animation: `fadeSlideUp 0.5s ease ${i * 0.12}s both` }}>
-                        <div className={`w-14 h-14 ${step.color} ring-2 ${step.ring} ring-offset-2 ring-offset-transparent rounded-full flex items-center justify-center text-xl mx-auto mb-3 group-hover:scale-125 transition-transform shadow-lg`}>
+                        <div className={`w-14 h-14 ${step.color} ring-2 ${step.ring} ring-offset-2 ring-offset-transparent rounded-full flex items-center justify-center text-xl mx-auto mb-3 group-hover:scale-125 transition-transform shadow-lg shadow-green-500/20`}>
                           {step.icon}
                         </div>
-                        <div className="text-xs font-black tracking-wide text-gray-300 mb-2">{step.label}</div>
-                        <div className="text-[10px] text-gray-600">Step {step.num}</div>
-                      </div>
+                        <div className="text-xs font-black tracking-wide text-gray-300 mb-2 group-hover:text-green-400 transition">{step.label}</div>
+                        <div className="text-[10px] text-gray-400">Step {step.num}</div>
+                        <div className="text-green-500/0 group-hover:text-green-400 text-[9px] font-bold mt-1 transition-all">Details &rarr;</div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -710,7 +850,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
                 <div>
-                  <h2 className="text-3xl font-black">LIVE MARKET INTELLIGENCE</h2>
+                  <h2 className="text-3xl font-black" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>LIVE MARKET INTELLIGENCE</h2>
                   <p className="text-green-400 text-sm mt-1 font-semibold">Real-Time &middot; AI-Powered &middot; Transparent</p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -718,7 +858,7 @@ export default function Home() {
                     <div className="w-2 h-2 bg-green-400 rounded-full" />
                     <div className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full anim-radarPing" />
                   </div>
-                  <span className="text-gray-600 text-xs ml-1">Updated every 15 min &middot; NCDEX, MCX, LME, APEDA</span>
+                  <span className="text-gray-400 text-xs ml-1">Updated every 15 min &middot; NCDEX, MCX, LME, APEDA</span>
                 </div>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -737,7 +877,7 @@ export default function Home() {
                             {flashRow === i && <span className="text-green-400 text-xs animate-pulse font-bold">&oplus; live</span>}
                           </div>
                           <div className="flex items-center gap-5">
-                            <span className="text-white font-bold text-sm">{item.price}<span className="text-gray-600 text-xs ml-0.5">{item.unit}</span></span>
+                            <span className="text-white font-bold text-sm">{item.price}<span className="text-gray-500 text-xs ml-0.5">{item.unit}</span></span>
                             <span className={`text-sm font-bold w-16 text-right flex items-center gap-0.5 justify-end ${item.change > 0 ? 'text-green-400' : item.change < 0 ? 'text-red-400' : 'text-gray-500'}`}>
                               {item.change > 0 ? '\u25b2' : item.change < 0 ? '\u25bc' : '\u2013'} {Math.abs(item.change).toFixed(1)}%
                             </span>
@@ -746,26 +886,26 @@ export default function Home() {
                         {hoveredRow === i && item.origin && (
                           <div className="px-3 pb-3 grid grid-cols-2 sm:grid-cols-3 gap-2 anim-fadeSlideUp">
                             <div className="bg-green-900/20 border border-green-900/30 rounded-lg px-2.5 py-1.5">
-                              <div className="text-[9px] text-gray-600 uppercase tracking-wider">Origin</div>
+                              <div className="text-[9px] text-gray-500 uppercase tracking-wider">Origin</div>
                               <div className="text-gray-300 text-xs font-semibold">{item.origin}</div>
                             </div>
                             <div className="bg-green-900/20 border border-green-900/30 rounded-lg px-2.5 py-1.5">
-                              <div className="text-[9px] text-gray-600 uppercase tracking-wider">Grade</div>
+                              <div className="text-[9px] text-gray-500 uppercase tracking-wider">Grade</div>
                               <div className="text-gray-300 text-xs font-semibold">{item.grade}</div>
                             </div>
                             <div className="bg-green-900/20 border border-green-900/30 rounded-lg px-2.5 py-1.5">
-                              <div className="text-[9px] text-gray-600 uppercase tracking-wider">Min Order</div>
+                              <div className="text-[9px] text-gray-500 uppercase tracking-wider">Min Order</div>
                               <div className="text-gray-300 text-xs font-semibold">{item.moq}</div>
                             </div>
                             <div className="bg-green-900/20 border border-green-900/30 rounded-lg px-2.5 py-1.5">
-                              <div className="text-[9px] text-gray-600 uppercase tracking-wider">52W Range</div>
+                              <div className="text-[9px] text-gray-500 uppercase tracking-wider">52W Range</div>
                               <div className="text-gray-300 text-xs font-semibold">{item.range52w}</div>
                             </div>
                             <div className="bg-green-900/20 border border-green-900/30 rounded-lg px-2.5 py-1.5">
-                              <div className="text-[9px] text-gray-600 uppercase tracking-wider">Packaging</div>
+                              <div className="text-[9px] text-gray-500 uppercase tracking-wider">Packaging</div>
                               <div className="text-gray-300 text-xs font-semibold">{item.packaging}</div>
                             </div>
-                            <a href={WA} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-[#25D366]/20 border border-[#25D366]/40 rounded-lg px-2.5 py-1.5 text-[#25D366] text-xs font-bold hover:bg-[#25D366]/30 transition">&#x1F4F1; Enquire</a>
+                            <a href={`${WA}?text=${encodeURIComponent(`Hi TradeFokus! I'm interested in ${item.name} (${item.grade || 'Standard Grade'}). Current price: ${item.price}${item.unit}. Please share: 1) Best FOB/CIF pricing 2) Available quantity & MOQ 3) Quality certificates 4) Delivery timeline`)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-[#25D366]/20 border border-[#25D366]/40 rounded-lg px-2.5 py-1.5 text-[#25D366] text-xs font-bold hover:bg-[#25D366]/30 transition">&#x1F4F1; Enquire</a>
                           </div>
                         )}
                       </div>
@@ -786,7 +926,7 @@ export default function Home() {
                         <span className="text-lg">{item.icon}</span>
                         <h4 className="text-white font-bold text-sm">{item.t}</h4>
                       </div>
-                      <p className="text-gray-600 text-xs leading-relaxed mb-2">{item.d}</p>
+                      <p className="text-gray-300 text-xs leading-relaxed mb-2">{item.d}</p>
                       <span className="text-green-500/0 group-hover:text-green-500 text-xs font-bold transition-all">View enterprise details &rarr;</span>
                     </button>
                   ))}
@@ -799,7 +939,7 @@ export default function Home() {
           <section id="problems" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a1a0a]">
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row justify-between items-start mb-10 gap-2">
-                <h2 className="text-3xl font-black">PROBLEMS WE SOLVE</h2>
+                <h2 className="text-3xl font-black" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>PROBLEMS WE SOLVE</h2>
                 <span className="text-green-400 text-sm italic font-semibold">Before &amp; After Tradefokus</span>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -822,7 +962,7 @@ export default function Home() {
                   ].map((row, i) => (
                     <div key={i} className="grid grid-cols-2 gap-4 group cursor-default">
                       <div className="bg-red-950/30 border border-red-900/20 rounded-lg px-4 py-3 group-hover:border-red-700/40 transition">
-                        <p className="text-gray-500 text-xs leading-relaxed">{row.w}</p>
+                        <p className="text-gray-300 text-xs leading-relaxed">{row.w}</p>
                       </div>
                       <div className="bg-green-950/30 border border-green-900/20 rounded-lg px-4 py-3 group-hover:border-green-700/40 transition">
                         <p className="text-gray-300 text-xs leading-relaxed">{row.t}</p>
@@ -831,13 +971,13 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="space-y-3">
-                  <p className="text-gray-600 text-xs font-black tracking-widest uppercase mb-4">Impact Metrics</p>
+                  <p className="text-gray-400 text-xs font-black tracking-widest uppercase mb-4">Impact Metrics</p>
                   {[['40%','Faster Documentation'],['25%','Lower Freight Cost'],['60%','Fewer Trade Disputes'],['3x','More Supplier Options'],['90%','On-Time Delivery']].map(([val, label], i) => (
                     <div key={i}
                       className="bg-[#162616]/60 border border-green-900/30 rounded-xl p-4 text-center hover:border-green-600/60 hover:bg-green-900/20 hover:scale-105 transition group cursor-default anim-glow">
                       <div className="text-3xl font-black text-green-400 group-hover:scale-110 transition-transform"
                         style={{ textShadow: '0 0 16px rgba(34,197,94,0.4)' }}>{val}</div>
-                      <div className="text-xs text-gray-600 mt-1">{label}</div>
+                      <div className="text-xs text-gray-400 mt-1">{label}</div>
                     </div>
                   ))}
                 </div>
@@ -848,7 +988,7 @@ export default function Home() {
           {/* FREIGHT & LOGISTICS */}
           <section id="logistics" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d1525]/80">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-black mb-10">FREIGHT & LOGISTICS MANAGEMENT</h2>
+              <h2 className="text-3xl font-black mb-10" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>FREIGHT & LOGISTICS MANAGEMENT</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <div className="bg-[#162616] border border-green-800/40 rounded-t-xl px-6 py-4">
@@ -866,7 +1006,7 @@ export default function Home() {
                         <span className="text-lg flex-shrink-0 mt-0.5 group-hover:scale-125 transition-transform">{item.icon}</span>
                         <div>
                           <h4 className="text-white font-semibold text-sm mb-1 group-hover:text-green-300 transition">{item.t}</h4>
-                          <p className="text-gray-600 text-xs leading-relaxed">{item.d}</p>
+                          <p className="text-gray-300 text-xs leading-relaxed">{item.d}</p>
                         </div>
                       </div>
                     ))}
@@ -888,7 +1028,7 @@ export default function Home() {
                         <span className="text-lg flex-shrink-0 mt-0.5 group-hover:scale-125 transition-transform">{item.icon}</span>
                         <div>
                           <h4 className="text-white font-semibold text-sm mb-1 group-hover:text-blue-300 transition">{item.t}</h4>
-                          <p className="text-gray-600 text-xs leading-relaxed">{item.d}</p>
+                          <p className="text-gray-300 text-xs leading-relaxed">{item.d}</p>
                         </div>
                       </div>
                     ))}
@@ -901,8 +1041,8 @@ export default function Home() {
           {/* TRADE DOCUMENTATION */}
           <section id="documentation" className="py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-black mb-3">TRADE DOCUMENTATION & COMPLIANCE</h2>
-              <p className="text-gray-600 text-sm mb-10 max-w-2xl">Tradefokus eliminates paperwork chaos. Every document your trade needs \u2014 generated, tracked, and archived in one place.</p>
+              <h2 className="text-3xl font-black mb-3" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>TRADE DOCUMENTATION & COMPLIANCE</h2>
+              <p className="text-gray-300 text-sm mb-10 max-w-2xl">Tradefokus eliminates paperwork chaos. Every document your trade needs \u2014 generated, tracked, and archived in one place.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {[
                   { title: 'PROCUREMENT DOCS',    hdr: 'bg-green-500',  dot: 'bg-green-400',  border: 'border-green-500/20',  items: ['Purchase Order (PO)', 'Proforma Invoice', 'Sales Contract', 'Letter of Intent (LOI)', 'Letter of Credit (LC) Guidance'] },
@@ -910,19 +1050,21 @@ export default function Home() {
                   { title: 'SHIPPING DOCUMENTS',  hdr: 'bg-blue-500',   dot: 'bg-blue-400',   border: 'border-blue-500/20',   items: ['Bill of Lading / e-BL', 'Packing List', 'Commercial Invoice', 'Certificate of Origin', 'Freight & Insurance Docs'] },
                   { title: 'CUSTOMS & REGULATORY',hdr: 'bg-orange-500', dot: 'bg-orange-400', border: 'border-orange-500/20', items: ['Shipping Bill / Bill of Entry', 'HS Code Classification', 'APEDA / FSSAI Registration', 'IEC Code Assistance', 'Port Health & Fumigation NOC'] },
                 ].map((col, i) => (
-                  <div key={i} className={`border ${col.border} rounded-xl overflow-hidden hover:scale-105 hover:shadow-xl transition-transform`}>
-                    <div className={`${col.hdr} px-4 py-3`}>
+                  <button key={i} onClick={() => openDetail(col.title, documentationDetails)}
+                    className={`border ${col.border} rounded-xl overflow-hidden hover:scale-105 hover:shadow-xl hover:shadow-green-500/10 transition-transform cursor-pointer text-left`}>
+                    <div className={`${col.hdr} px-4 py-3 flex items-center justify-between`}>
                       <h3 className="text-white font-black text-xs tracking-widest">{col.title}</h3>
+                      <span className="text-white/60 text-xs">Details &rarr;</span>
                     </div>
                     <div className="p-4 space-y-3 bg-[#0d1f0d]/40">
                       {col.items.map((item, j) => (
-                        <div key={j} className="flex items-start gap-2 group cursor-default">
+                        <div key={j} className="flex items-start gap-2 group cursor-pointer">
                           <div className={`w-2 h-2 ${col.dot} rounded-full mt-1.5 flex-shrink-0 group-hover:scale-150 transition-transform`} />
-                          <span className="text-gray-400 text-xs group-hover:text-gray-200 transition">{item}</span>
+                          <span className="text-gray-300 text-xs group-hover:text-white transition">{item}</span>
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -931,7 +1073,7 @@ export default function Home() {
           {/* INNOVATIONS */}
           <section id="innovations" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a1a0a]">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-black mb-10">INNOVATIONS ABSENT IN EXISTING MARKET</h2>
+              <h2 className="text-3xl font-black mb-10" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>INNOVATIONS ABSENT IN EXISTING MARKET</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {[
                   { badge: 'MARKET FIRST', badgeCls: 'bg-[#162616] text-green-400 border border-green-700', title: 'Unified Agri + Industrial Platform', titleCls: 'text-white',    icon: '🌐', desc: 'No existing platform combines agricultural and industrial commodity trading, compliance, freight, and live pricing in a single UX. Tradefokus does.' },
@@ -941,8 +1083,8 @@ export default function Home() {
                   { badge: 'TIME-SAVING', badgeCls: 'bg-orange-500/20 text-orange-300 border border-orange-600', title: 'Live Freight Rate Comparison', titleCls: 'text-orange-400',icon: '\u26a1',    desc: 'Compare inland truck rates AND ocean freight rates in real time from within the trade enquiry flow \u2014 saving hours of manual coordination.' },
                   { badge: 'EFFICIENCY',  badgeCls: 'bg-blue-500/20 text-blue-300 border border-blue-600',   title: 'One-Click Document Pack',        titleCls: 'text-blue-400', icon: '📄', desc: 'Generate a complete shipment document pack from a single confirmed order \u2014 Invoice, PL, COA, BL draft, shipping bill \u2014 in under 3 minutes.' },
                 ].map((item, i) => (
-                  <div key={i}
-                    className="bg-[#162616]/30 border border-green-900/30 rounded-xl p-6 hover:border-green-700/60 hover:bg-green-900/15 hover:-translate-y-1 transition group cursor-default">
+                  <button key={i} onClick={() => openDetail(item.title, innovationDetails)}
+                    className="bg-[#162616]/30 border border-green-900/30 rounded-xl p-6 hover:border-green-700/60 hover:bg-green-900/15 hover:-translate-y-1 transition group cursor-pointer text-left">
                     <div className="flex justify-between items-start mb-4 gap-3">
                       <div className="flex items-center gap-2 flex-1">
                         <span className="text-2xl anim-floatY" style={{ animationDelay: `${i * 0.4}s` }}>{item.icon}</span>
@@ -951,8 +1093,9 @@ export default function Home() {
                       <span className={`text-xs font-black px-2 py-1 rounded whitespace-nowrap ${item.badgeCls}`}>{item.badge}</span>
                     </div>
                     <div className="w-8 h-0.5 bg-green-800 mb-4 group-hover:w-full transition-all duration-700" />
-                    <p className="text-gray-600 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
+                    <p className="text-gray-300 text-xs leading-relaxed mb-2">{item.desc}</p>
+                    <span className="text-green-500/0 group-hover:text-green-400 text-xs font-bold transition-all">Explore innovation &rarr;</span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -961,7 +1104,7 @@ export default function Home() {
           {/* WHY CHOOSE */}
           <section id="why" className="py-20 px-4 sm:px-6 lg:px-8 bg-green-500/5 border-y border-green-900/20">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-black mb-10">WHY CHOOSE TRADEFOKUS</h2>
+              <h2 className="text-3xl font-black mb-10" style={{ textShadow: '0 0 20px rgba(34,197,94,0.2)' }}>WHY CHOOSE TRADEFOKUS</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   { icon: '💼', title: 'For Buyers',              border: 'border-amber-500/20',  titleCls: 'text-amber-400',  delay: '0s',   items: ['Access verified suppliers globally', 'Transparent live pricing \u2014 no hidden markups', 'Full visibility into shipment at every stage', 'One platform for sourcing, logistics & documents'] },
@@ -1001,8 +1144,8 @@ export default function Home() {
                   className="bg-green-500 text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-green-400 transition hover:shadow-xl hover:shadow-green-500/40 transform hover:scale-105 active:scale-95 anim-glow">
                   Send Enquiry
                 </button>
-                <a href={WA} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-[#1fbb59] transition transform hover:scale-105 active:scale-95">
+                <a href={`${WA}?text=${encodeURIComponent("Hi TradeFokus! I'm ready to start trading. Please help me with: 1) Available commodities & pricing 2) Supply chain services 3) Documentation support 4) Freight & logistics options")}`} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-10 py-4 rounded-xl font-black text-lg hover:bg-[#1fbb59] transition transform hover:scale-105 active:scale-95 shadow-[0_0_25px_rgba(37,211,102,0.3)]">
                   &#x1F4F1; Chat on WhatsApp
                 </a>
               </div>
