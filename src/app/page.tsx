@@ -199,6 +199,55 @@ const cssStyles = `
   .anim-orbit3 { animation: orbitDot 18s linear infinite; }
   .neon-glow { animation: neonPulse 3s ease-in-out infinite; }
   .anim-floatSlow { animation: floatSlow 8s ease-in-out infinite; }
+
+  @keyframes fireFlicker {
+    0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.7; filter: blur(8px); }
+    25% { transform: scaleY(1.3) scaleX(0.9); opacity: 1; filter: blur(12px); }
+    50% { transform: scaleY(0.8) scaleX(1.2); opacity: 0.8; filter: blur(6px); }
+    75% { transform: scaleY(1.15) scaleX(0.95); opacity: 0.9; filter: blur(10px); }
+  }
+  @keyframes waterRipple {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    50% { transform: scale(1.5); opacity: 0.2; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  @keyframes windSwirl {
+    0% { transform: translateX(-100%) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.3; }
+    100% { transform: translateX(100vw) rotate(720deg); opacity: 0; }
+  }
+  @keyframes earthPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(34,197,94,0.3), 0 0 60px rgba(34,197,94,0.1), inset 0 0 30px rgba(34,197,94,0.05); }
+    50% { box-shadow: 0 0 50px rgba(34,197,94,0.5), 0 0 100px rgba(34,197,94,0.2), inset 0 0 50px rgba(34,197,94,0.1); }
+  }
+  @keyframes starTwinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  @keyframes meteorShoot {
+    0% { transform: translateX(0) translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(-500px) translateY(300px); opacity: 0; }
+  }
+  @keyframes ringExpand {
+    0% { transform: scale(0.9) rotateX(75deg); opacity: 0.5; }
+    50% { transform: scale(1.1) rotateX(75deg); opacity: 0.2; }
+    100% { transform: scale(0.9) rotateX(75deg); opacity: 0.5; }
+  }
+  @keyframes auroraWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .anim-fire { animation: fireFlicker 2s ease-in-out infinite; }
+  .anim-waterRipple { animation: waterRipple 3s ease-out infinite; }
+  .anim-wind { animation: windSwirl 12s linear infinite; }
+  .anim-earthPulse { animation: earthPulse 4s ease-in-out infinite; }
+  .anim-star { animation: starTwinkle 2s ease-in-out infinite; }
+  .anim-meteor { animation: meteorShoot 4s linear infinite; }
+  .anim-ring { animation: ringExpand 5s ease-in-out infinite; }
+  .anim-aurora { background-size: 200% 200%; animation: auroraWave 6s ease infinite; }
 `;
 
 const commodityRates: CommodityRate[] = [
@@ -556,44 +605,96 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-                <div className="relative">
-                  <div className="absolute -top-8 -left-4 text-3xl anim-floatY pointer-events-none" style={{ animationDelay: '0s' }}>&#x1F33E;</div>
-                  <div className="absolute top-6 -right-4 text-2xl anim-floatY pointer-events-none" style={{ animationDelay: '1.4s' }}>&#x2699;&#xFE0F;</div>
-                  <div className="absolute -bottom-6 left-10 text-2xl anim-floatY pointer-events-none" style={{ animationDelay: '2.8s' }}>&#x1F4E6;</div>
-                  <div className="absolute bottom-8 -right-2 text-2xl anim-floatY pointer-events-none" style={{ animationDelay: '0.7s' }}>&#x1F69B;</div>
-                  <div className="bg-[#162616]/85 border border-green-800/40 rounded-2xl p-8 backdrop-blur-sm">
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="text-green-400 text-xs font-black tracking-widest uppercase">Platform Highlights</span>
-                      <div className="flex items-end gap-px" style={{ height: '18px' }}>
-                        <span className="bar" />
-                        <span className="bar" />
-                        <span className="bar" />
-                        <span className="bar" />
-                        <span className="bar" />
+                {/* Elemental Animated Banner */}
+                <div className="relative flex items-center justify-center min-h-[420px] lg:min-h-[520px]">
+                  {/* Starfield background */}
+                  {[...Array(20)].map((_, i) => (
+                    <div key={i} className="absolute w-1 h-1 bg-white rounded-full anim-star"
+                      style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animationDelay: `${i * 0.3}s`, animationDuration: `${1.5 + Math.random() * 2}s` }} />
+                  ))}
+                  {/* Meteor streaks */}
+                  <div className="absolute top-10 right-0 w-1 h-20 bg-gradient-to-b from-white/60 to-transparent rounded-full anim-meteor" style={{ animationDelay: '0s' }} />
+                  <div className="absolute top-24 right-20 w-0.5 h-16 bg-gradient-to-b from-amber-400/50 to-transparent rounded-full anim-meteor" style={{ animationDelay: '2s' }} />
+                  <div className="absolute top-4 right-40 w-0.5 h-12 bg-gradient-to-b from-blue-400/40 to-transparent rounded-full anim-meteor" style={{ animationDelay: '3.5s' }} />
+
+                  {/* Central Earth Globe */}
+                  <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80">
+                    {/* Outer aurora ring */}
+                    <div className="absolute -inset-12 rounded-full anim-aurora opacity-30"
+                      style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.3), rgba(59,130,246,0.3), rgba(245,158,11,0.3), rgba(239,68,68,0.3), rgba(34,197,94,0.3))', backgroundSize: '200% 200%' }} />
+                    {/* Saturn-like rings */}
+                    <div className="absolute inset-[-20%] anim-ring" style={{ border: '2px solid rgba(34,197,94,0.15)', borderRadius: '50%' }} />
+                    <div className="absolute inset-[-30%] anim-ring" style={{ border: '1px solid rgba(59,130,246,0.1)', borderRadius: '50%', animationDelay: '1.5s' }} />
+                    <div className="absolute inset-[-40%] anim-ring" style={{ border: '1px solid rgba(245,158,11,0.08)', borderRadius: '50%', animationDelay: '3s' }} />
+
+                    {/* Earth sphere */}
+                    <div className="absolute inset-0 rounded-full anim-earthPulse overflow-hidden"
+                      style={{ background: 'radial-gradient(circle at 35% 35%, #1a4a2e 0%, #0d2818 40%, #071a0e 70%, #030d06 100%)' }}>
+                      {/* Continent shapes */}
+                      <div className="absolute inset-0 anim-spinGlobe" style={{ animationDuration: '30s' }}>
+                        <div className="absolute top-[20%] left-[15%] w-[30%] h-[25%] bg-green-500/20 rounded-[40%_60%_50%_70%] blur-sm" />
+                        <div className="absolute top-[35%] left-[55%] w-[20%] h-[30%] bg-green-600/15 rounded-[60%_40%_70%_30%] blur-sm" />
+                        <div className="absolute top-[55%] left-[25%] w-[25%] h-[20%] bg-green-500/15 rounded-[50%_50%_40%_60%] blur-sm" />
+                        <div className="absolute top-[15%] left-[60%] w-[15%] h-[15%] bg-green-700/20 rounded-[45%_55%_50%_50%] blur-sm" />
+                      </div>
+                      {/* Water surface shimmer */}
+                      <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(59,130,246,0.15) 0%, transparent 50%)' }} />
+                      {/* Atmosphere glow */}
+                      <div className="absolute -inset-1 rounded-full" style={{ background: 'radial-gradient(circle, transparent 45%, rgba(34,197,94,0.1) 65%, rgba(59,130,246,0.08) 80%, transparent 100%)' }} />
+                    </div>
+
+                    {/* Orbiting elements - Earth, Water, Fire, Wind */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="anim-orbit1" style={{ animationDuration: '8s' }}>
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-green-900/60 border border-green-400/40 shadow-[0_0_15px_rgba(34,197,94,0.6)] backdrop-blur-sm">
+                          &#x1F30D;
+                        </div>
                       </div>
                     </div>
-                    <div className="space-y-4">
-                      {[
-                        ['🌐', 'Live Market Prices \u2013 Agri & Non-Agri'],
-                        ['📦', 'Full Supply Chain Management'],
-                        ['🚂', 'Inland & International Freight Listing'],
-                        ['📡', 'Real-Time Shipment Tracking'],
-                        ['📄', 'End-to-End Trade Documentation'],
-                        ['🔍', 'Quality Inspection Coordination'],
-                        ['🤖', 'AI Supply & Demand Predictions'],
-                        ['🤝', 'Verified Buyer\u2013Supplier Matching'],
-                      ].map(([icon, text], i) => (
-                        <button key={i}
-                          onClick={() => openDetail(text as string, platformDetails)}
-                          className="flex items-center gap-3 group cursor-pointer w-full text-left hover:bg-green-900/20 rounded-lg px-2 py-1 -mx-2 transition"
-                          style={{ animation: `fadeSlideUp 0.5s ease ${i * 0.08}s both` }}>
-                          <span className="text-lg transition-transform group-hover:scale-125">{icon}</span>
-                          <span className="text-gray-300 text-sm transition-colors group-hover:text-green-400 flex-1">{text}</span>
-                          <span className="text-green-500/0 group-hover:text-green-500/80 text-xs transition-all">Details &rarr;</span>
-                        </button>
-                      ))}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="anim-orbit2" style={{ animationDuration: '11s' }}>
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-900/60 border border-blue-400/40 shadow-[0_0_15px_rgba(59,130,246,0.6)] backdrop-blur-sm">
+                          &#x1F30A;
+                        </div>
+                      </div>
                     </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="anim-orbit3" style={{ animationDuration: '14s' }}>
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-orange-900/60 border border-orange-400/40 shadow-[0_0_15px_rgba(249,115,22,0.6)] backdrop-blur-sm">
+                          &#x1F525;
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="anim-orbit1" style={{ animationDuration: '17s', animationDirection: 'reverse' }}>
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-gray-900/60 border border-gray-400/40 shadow-[0_0_15px_rgba(156,163,175,0.5)] backdrop-blur-sm">
+                          &#x1F32C;&#xFE0F;
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Fire flicker at bottom */}
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-24 anim-fire">
+                      <div className="absolute inset-0 bg-gradient-to-t from-orange-500/40 via-amber-500/20 to-transparent rounded-full" />
+                    </div>
+                    {/* Water ripples */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-blue-400/30 anim-waterRipple" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cyan-400/20 anim-waterRipple" style={{ animationDelay: '1s' }} />
+                    {/* Wind streaks */}
+                    <div className="absolute top-[30%] -left-8 w-20 h-0.5 bg-gradient-to-r from-transparent via-gray-400/30 to-transparent anim-wind" style={{ animationDuration: '8s' }} />
+                    <div className="absolute top-[60%] -left-8 w-16 h-0.5 bg-gradient-to-r from-transparent via-gray-300/20 to-transparent anim-wind" style={{ animationDuration: '10s', animationDelay: '3s' }} />
                   </div>
+
+                  {/* Element labels floating around */}
+                  <div className="absolute top-4 left-4 text-xs font-black text-green-400/60 tracking-widest anim-floatY" style={{ animationDelay: '0s' }}>EARTH</div>
+                  <div className="absolute top-4 right-4 text-xs font-black text-blue-400/60 tracking-widest anim-floatY" style={{ animationDelay: '1s' }}>WATER</div>
+                  <div className="absolute bottom-4 left-4 text-xs font-black text-orange-400/60 tracking-widest anim-floatY" style={{ animationDelay: '2s' }}>FIRE</div>
+                  <div className="absolute bottom-4 right-4 text-xs font-black text-gray-400/60 tracking-widest anim-floatY" style={{ animationDelay: '3s' }}>WIND</div>
+
+                  {/* Supply chain icons floating */}
+                  <div className="absolute top-8 left-1/2 -translate-x-1/2 text-2xl anim-floatY pointer-events-none" style={{ animationDelay: '0.5s' }}>&#x1F33E;</div>
+                  <div className="absolute bottom-12 left-8 text-xl anim-floatY pointer-events-none" style={{ animationDelay: '1.5s' }}>&#x1F4E6;</div>
+                  <div className="absolute bottom-12 right-8 text-xl anim-floatY pointer-events-none" style={{ animationDelay: '2.5s' }}>&#x1F6A2;</div>
                 </div>
               </div>
             </div>
@@ -770,10 +871,12 @@ export default function Home() {
                       { t: 'Freight & Bulk Carrier Listing', d: 'Bulk vessel availability, container options and freight rate listings.' },
                       { t: 'Demand Forecasting',             d: 'Sector-level industrial demand analytics for procurement planning.' },
                     ].map((item, i) => (
-                      <div key={i} className="border border-blue-800/25 rounded-xl p-5 hover:border-blue-400/40 hover:bg-blue-900/10 hover:-translate-y-1 transition group cursor-default">
+                      <button key={i} onClick={() => openDetail(item.t, nonAgriFeatureDetails)}
+                        className="border border-blue-800/25 rounded-xl p-5 hover:border-blue-400/40 hover:bg-blue-900/10 hover:-translate-y-1 transition group cursor-pointer text-left">
                         <h4 className="text-blue-300 font-bold text-sm mb-2 group-hover:text-blue-200">{item.t}</h4>
-                        <p className="text-gray-300 text-xs leading-relaxed">{item.d}</p>
-                      </div>
+                        <p className="text-gray-300 text-xs leading-relaxed mb-2">{item.d}</p>
+                        <span className="text-blue-500/0 group-hover:text-blue-400 text-xs font-bold transition-all">Click for details &rarr;</span>
+                      </button>
                     ))}
                     <div className="sm:col-span-2 border border-amber-700/30 rounded-xl p-5 hover:bg-amber-900/10 hover:-translate-y-1 transition cursor-default">
                       <h4 className="text-amber-400 font-bold text-sm mb-1">Port & Customs Assistance</h4>
