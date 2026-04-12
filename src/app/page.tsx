@@ -610,113 +610,75 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-                {/* Global Trade Network Banner */}
-                <div className="relative flex items-center justify-center min-h-[420px] lg:min-h-[520px] overflow-hidden">
-                  {/* Trippy background glow */}
-                  <div className="absolute inset-0 anim-trippyBg opacity-15 rounded-3xl" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.4), rgba(59,130,246,0.4), rgba(236,72,153,0.4), rgba(139,92,246,0.4), rgba(6,182,212,0.4), rgba(34,197,94,0.4))', backgroundSize: '300% 300%' }} />
+                {/* Global Trade Network — Earth Focus */}
+                <div className="relative flex items-center justify-center min-h-[420px] lg:min-h-[520px]">
+                  {/* Big Earth Globe */}
+                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px]">
+                    {/* Soft color-shifting aura behind globe */}
+                    <div className="absolute -inset-10 rounded-full anim-colorShift opacity-15" style={{ background: 'radial-gradient(circle, rgba(34,197,94,0.6), rgba(59,130,246,0.4), rgba(139,92,246,0.3), transparent 70%)' }} />
 
-                  {/* Starfield */}
-                  {[...Array(30)].map((_, i) => (
-                    <div key={i} className="absolute rounded-full anim-star" style={{ width: i % 4 === 0 ? 3 : i % 3 === 0 ? 2 : 1, height: i % 4 === 0 ? 3 : i % 3 === 0 ? 2 : 1, background: ['#22c55e','#3b82f6','#ec4899','#a855f7','#06b6d4','#f59e0b'][i % 6], top: `${(i * 31 + 7) % 97}%`, left: `${(i * 47 + 13) % 95}%`, animationDelay: `${i * 0.2}s`, animationDuration: `${1.2 + (i % 5) * 0.5}s` }} />
-                  ))}
+                    {/* Two tight network rings */}
+                    <div className="absolute inset-[-12%] rounded-full border border-dashed border-green-400/20 anim-spinGlobe" style={{ animationDuration: '25s' }} />
+                    <div className="absolute inset-[-22%] rounded-full border border-dashed border-blue-400/12 anim-spinGlobe" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
 
-                  {/* Flowing data particles — vertical streams */}
-                  {[...Array(10)].map((_, i) => (
-                    <div key={`d${i}`} className="absolute w-0.5 rounded-full anim-dataFlow" style={{ height: 6 + (i % 4) * 4, left: `${8 + i * 9}%`, background: `linear-gradient(to top, transparent, ${['#22c55e','#3b82f6','#ec4899','#a855f7','#06b6d4','#f59e0b','#34d399','#fb7185','#818cf8','#22d3ee'][i]})`, animationDelay: `${i * 0.35}s`, animationDuration: `${2 + (i % 3) * 0.8}s` }} />
-                  ))}
+                    {/* Pulse rings expanding from globe */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-green-400/25 anim-ring" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-blue-400/20 anim-ring" style={{ animationDelay: '1s' }} />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-emerald-400/15 anim-ring" style={{ animationDelay: '2s' }} />
 
-                  {/* Central Globe */}
-                  <div className="relative w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72">
-                    {/* Color-shifting outer aura */}
-                    <div className="absolute -inset-20 rounded-full anim-colorShift opacity-20" style={{ background: 'radial-gradient(circle, rgba(34,197,94,0.5), rgba(59,130,246,0.4), rgba(236,72,153,0.3), rgba(139,92,246,0.4), transparent 70%)' }} />
-
-                    {/* Network rings — rotating dashed circles */}
-                    <div className="absolute inset-[-25%] rounded-full border border-dashed border-green-400/25 anim-spinGlobe" style={{ animationDuration: '20s' }} />
-                    <div className="absolute inset-[-40%] rounded-full border border-dashed border-blue-400/18 anim-spinGlobe" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
-                    <div className="absolute inset-[-55%] rounded-full border border-dashed border-purple-400/12 anim-spinGlobe" style={{ animationDuration: '40s' }} />
-
-                    {/* Network nodes pulsing on rings */}
-                    {[
-                      { t: '-15%', l: '50%', c: '#22c55e', d: '0s' },
-                      { t: '50%', l: '-15%', c: '#3b82f6', d: '0.5s' },
-                      { t: '110%', l: '50%', c: '#ec4899', d: '1s' },
-                      { t: '50%', l: '110%', c: '#a855f7', d: '1.5s' },
-                      { t: '-30%', l: '-20%', c: '#06b6d4', d: '0.3s' },
-                      { t: '-30%', l: '115%', c: '#f59e0b', d: '0.8s' },
-                      { t: '125%', l: '-20%', c: '#34d399', d: '1.3s' },
-                      { t: '125%', l: '115%', c: '#fb7185', d: '1.8s' },
-                    ].map((n, i) => (
-                      <div key={`n${i}`} className="absolute" style={{ top: n.t, left: n.l, transform: 'translate(-50%,-50%)' }}>
-                        <div className="relative">
-                          <div className="w-3 h-3 rounded-full anim-connectPulse" style={{ background: n.c, color: n.c, animationDelay: n.d }} />
-                          <div className="absolute inset-0 rounded-full anim-dotPing" style={{ border: `1px solid ${n.c}`, animationDelay: n.d }} />
-                        </div>
-                      </div>
+                    {/* Connecting beams — tight, from center */}
+                    {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+                      <div key={`b${i}`} className="absolute top-1/2 left-1/2 h-[1px] anim-networkBeam" style={{ width: '48%', background: `linear-gradient(to right, ${['#22c55e','#3b82f6','#a855f7','#06b6d4','#ec4899','#f59e0b'][i]}50, transparent)`, transformOrigin: '0 50%', transform: `rotate(${deg}deg)`, animationDelay: `${i * 0.6}s` }} />
                     ))}
 
-                    {/* Connecting beams from center to nodes */}
-                    {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
-                      <div key={`b${i}`} className="absolute top-1/2 left-1/2 h-[1px] anim-networkBeam" style={{ width: '55%', background: `linear-gradient(to right, ${['#22c55e','#3b82f6','#ec4899','#a855f7','#06b6d4','#f59e0b','#34d399','#fb7185'][i]}40, transparent)`, transformOrigin: '0 50%', transform: `rotate(${deg}deg)`, animationDelay: `${i * 0.5}s` }} />
-                    ))}
-
-                    {/* Network pulse rings expanding from globe */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-green-400/30 anim-ring" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-blue-400/25 anim-ring" style={{ animationDelay: '1s' }} />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full border border-purple-400/20 anim-ring" style={{ animationDelay: '2s' }} />
-
-                    {/* Earth sphere */}
-                    <div className="absolute inset-0 rounded-full anim-globePulse overflow-hidden" style={{ background: 'radial-gradient(circle at 35% 35%, #1a3a4e 0%, #0d1828 40%, #0a0e1a 70%, #050810 100%)' }}>
-                      <div className="absolute inset-0 anim-spinGlobe" style={{ animationDuration: '28s' }}>
-                        <div className="absolute top-[20%] left-[15%] w-[30%] h-[25%] bg-green-500/25 rounded-[40%_60%_50%_70%] blur-sm" />
-                        <div className="absolute top-[35%] left-[55%] w-[20%] h-[30%] bg-emerald-600/20 rounded-[60%_40%_70%_30%] blur-sm" />
-                        <div className="absolute top-[55%] left-[25%] w-[25%] h-[20%] bg-green-500/18 rounded-[50%_50%_40%_60%] blur-sm" />
-                        <div className="absolute top-[15%] left-[60%] w-[15%] h-[15%] bg-teal-700/22 rounded-[45%_55%_50%_50%] blur-sm" />
+                    {/* Earth sphere — large and prominent */}
+                    <div className="absolute inset-0 rounded-full anim-globePulse overflow-hidden" style={{ background: 'radial-gradient(circle at 30% 30%, #134e2e 0%, #0c2a1a 35%, #071a10 60%, #030d06 100%)' }}>
+                      {/* Continents spinning */}
+                      <div className="absolute inset-0 anim-spinGlobe" style={{ animationDuration: '30s' }}>
+                        <div className="absolute top-[12%] left-[10%] w-[35%] h-[28%] bg-green-400/30 rounded-[40%_60%_50%_70%] blur-[3px]" />
+                        <div className="absolute top-[30%] left-[52%] w-[22%] h-[35%] bg-green-500/25 rounded-[60%_40%_70%_30%] blur-[3px]" />
+                        <div className="absolute top-[52%] left-[20%] w-[28%] h-[22%] bg-emerald-500/22 rounded-[50%_50%_40%_60%] blur-[3px]" />
+                        <div className="absolute top-[10%] left-[58%] w-[18%] h-[18%] bg-green-600/28 rounded-[45%_55%_50%_50%] blur-[2px]" />
+                        <div className="absolute top-[65%] left-[55%] w-[20%] h-[15%] bg-teal-500/20 rounded-[55%_45%_60%_40%] blur-[2px]" />
                       </div>
-                      {/* Color shift overlay for trippy feel */}
-                      <div className="absolute inset-0 rounded-full anim-colorShift opacity-25" style={{ background: 'radial-gradient(ellipse at 40% 40%, rgba(139,92,246,0.3) 0%, rgba(236,72,153,0.2) 30%, rgba(6,182,212,0.15) 60%, transparent 80%)' }} />
-                      {/* Ocean shimmer */}
-                      <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(59,130,246,0.18) 0%, transparent 50%)' }} />
+                      {/* Ocean depth layers */}
+                      <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(ellipse at 25% 25%, rgba(6,182,212,0.2) 0%, rgba(59,130,246,0.12) 30%, transparent 60%)' }} />
+                      <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(ellipse at 65% 70%, rgba(59,130,246,0.1) 0%, transparent 40%)' }} />
+                      {/* Color shift overlay */}
+                      <div className="absolute inset-0 rounded-full anim-colorShift opacity-15" style={{ background: 'radial-gradient(ellipse at 40% 40%, rgba(34,197,94,0.25) 0%, rgba(6,182,212,0.15) 40%, transparent 70%)' }} />
                       {/* Atmosphere glow */}
-                      <div className="absolute -inset-1 rounded-full" style={{ background: 'radial-gradient(circle, transparent 44%, rgba(34,197,94,0.12) 60%, rgba(59,130,246,0.1) 75%, rgba(139,92,246,0.06) 90%, transparent 100%)' }} />
+                      <div className="absolute -inset-2 rounded-full" style={{ background: 'radial-gradient(circle, transparent 42%, rgba(34,197,94,0.15) 55%, rgba(59,130,246,0.12) 70%, rgba(6,182,212,0.06) 85%, transparent 100%)' }} />
+                      {/* Highlight reflection */}
+                      <div className="absolute top-[8%] left-[15%] w-[35%] h-[25%] bg-white/[0.04] rounded-full blur-lg" />
                     </div>
 
-                    {/* Orbiting trade connector icons */}
+                    {/* Orbiting trade icons — tight to globe */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="anim-orbit1" style={{ animationDuration: '8s' }}>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-green-900/70 border border-green-400/50 shadow-[0_0_20px_rgba(34,197,94,0.7)] backdrop-blur-sm">&#x1F91D;</div>
+                      <div className="anim-orbit1" style={{ animationDuration: '9s' }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-green-950/80 border border-green-400/50 shadow-[0_0_18px_rgba(34,197,94,0.6)] backdrop-blur-sm">&#x1F91D;</div>
                       </div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="anim-orbit2" style={{ animationDuration: '11s' }}>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-blue-900/70 border border-blue-400/50 shadow-[0_0_20px_rgba(59,130,246,0.7)] backdrop-blur-sm">&#x1F310;</div>
+                      <div className="anim-orbit2" style={{ animationDuration: '12s' }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-blue-950/80 border border-blue-400/50 shadow-[0_0_18px_rgba(59,130,246,0.6)] backdrop-blur-sm">&#x1F6A2;</div>
                       </div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="anim-orbit3" style={{ animationDuration: '14s' }}>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-purple-900/70 border border-purple-400/50 shadow-[0_0_20px_rgba(139,92,246,0.7)] backdrop-blur-sm">&#x1F4CA;</div>
+                      <div className="anim-orbit3" style={{ animationDuration: '15s' }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-cyan-950/80 border border-cyan-400/50 shadow-[0_0_18px_rgba(6,182,212,0.6)] backdrop-blur-sm">&#x1F4CA;</div>
                       </div>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="anim-orbit1" style={{ animationDuration: '17s', animationDirection: 'reverse' }}>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg bg-pink-900/70 border border-pink-400/50 shadow-[0_0_20px_rgba(236,72,153,0.7)] backdrop-blur-sm">&#x1F680;</div>
+                      <div className="anim-orbit1" style={{ animationDuration: '18s', animationDirection: 'reverse' }}>
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-base bg-emerald-950/80 border border-emerald-400/50 shadow-[0_0_18px_rgba(52,211,153,0.6)] backdrop-blur-sm">&#x1F33E;</div>
                       </div>
                     </div>
+
+                    {/* Small twinkling dots near the globe */}
+                    {[...Array(12)].map((_, i) => (
+                      <div key={`s${i}`} className="absolute rounded-full anim-star" style={{ width: i % 3 === 0 ? 3 : 2, height: i % 3 === 0 ? 3 : 2, background: ['#22c55e','#3b82f6','#06b6d4','#34d399'][i % 4], top: `${10 + (i * 67 + 5) % 80}%`, left: `${10 + (i * 53 + 11) % 80}%`, animationDelay: `${i * 0.25}s`, animationDuration: `${1.5 + (i % 4) * 0.4}s` }} />
+                    ))}
                   </div>
-
-                  {/* Trade connection labels */}
-                  <div className="absolute top-3 left-3 text-[10px] font-black tracking-[0.3em] anim-floatY" style={{ animationDelay: '0s', color: '#22c55e', textShadow: '0 0 12px rgba(34,197,94,0.6)' }}>CONNECT</div>
-                  <div className="absolute top-3 right-3 text-[10px] font-black tracking-[0.3em] anim-floatY" style={{ animationDelay: '1s', color: '#3b82f6', textShadow: '0 0 12px rgba(59,130,246,0.6)' }}>TRADE</div>
-                  <div className="absolute bottom-3 left-3 text-[10px] font-black tracking-[0.3em] anim-floatY" style={{ animationDelay: '2s', color: '#a855f7', textShadow: '0 0 12px rgba(139,92,246,0.6)' }}>DISCOVER</div>
-                  <div className="absolute bottom-3 right-3 text-[10px] font-black tracking-[0.3em] anim-floatY" style={{ animationDelay: '3s', color: '#ec4899', textShadow: '0 0 12px rgba(236,72,153,0.6)' }}>GLOBAL</div>
-
-                  {/* Floating trade icons */}
-                  <div className="absolute top-7 left-1/2 -translate-x-1/2 text-2xl anim-floatY pointer-events-none" style={{ animationDelay: '0.5s' }}>&#x1F33E;</div>
-                  <div className="absolute bottom-10 left-6 text-lg anim-floatY pointer-events-none" style={{ animationDelay: '1.2s' }}>&#x1F4E6;</div>
-                  <div className="absolute bottom-10 right-6 text-lg anim-floatY pointer-events-none" style={{ animationDelay: '2.2s' }}>&#x1F6A2;</div>
-                  <div className="absolute top-1/4 left-3 text-base anim-floatY pointer-events-none" style={{ animationDelay: '0.8s' }}>&#x1F4B9;</div>
-                  <div className="absolute top-1/4 right-3 text-base anim-floatY pointer-events-none" style={{ animationDelay: '1.8s' }}>&#x1F517;</div>
-                  <div className="absolute top-2/3 left-5 text-base anim-floatY pointer-events-none" style={{ animationDelay: '3.2s' }}>&#x1F30F;</div>
-                  <div className="absolute top-2/3 right-5 text-base anim-floatY pointer-events-none" style={{ animationDelay: '2.8s' }}>&#x2728;</div>
                 </div>
               </div>
             </div>
