@@ -25,6 +25,105 @@ interface DetailData {
   clients: string;
 }
 
+const ACCENT = {
+  green:  { grad: 'from-green-900/80 to-green-950/95', border: 'border-green-500/30', ring: 'ring-green-500/20', text: 'text-green-400', badgeBg: 'bg-green-500/15', dot: 'bg-green-400', bar: 'bg-green-500', metricBg: 'bg-green-900/30', numGlow: 'drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]' },
+  amber:  { grad: 'from-amber-900/80 to-[#0d1f0d]/95',  border: 'border-amber-500/30', ring: 'ring-amber-500/20',  text: 'text-amber-400', badgeBg: 'bg-amber-500/15',  dot: 'bg-amber-400',  bar: 'bg-amber-500',  metricBg: 'bg-amber-900/30',  numGlow: 'drop-shadow-[0_0_8px_rgba(245,158,11,0.8)]' },
+  blue:   { grad: 'from-blue-900/80 to-[#0d1525]/95',    border: 'border-blue-500/30',  ring: 'ring-blue-500/20',   text: 'text-blue-400',  badgeBg: 'bg-blue-500/15',   dot: 'bg-blue-400',   bar: 'bg-blue-500',   metricBg: 'bg-blue-900/30',   numGlow: 'drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]' },
+  orange: { grad: 'from-orange-900/80 to-[#0d1f0d]/95',  border: 'border-orange-500/30',ring: 'ring-orange-500/20', text: 'text-orange-400',badgeBg: 'bg-orange-500/15', dot: 'bg-orange-400', bar: 'bg-orange-500', metricBg: 'bg-orange-900/30', numGlow: 'drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]' },
+};
+
+function DetailModal({ data, onClose, wa }: { data: DetailData; onClose: () => void; wa: string }) {
+  const a = ACCENT[data.accent] || ACCENT.green;
+  return (
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-[60] flex items-center justify-center p-3 sm:p-6" onClick={onClose}>
+      <div
+        className={`relative bg-[#0b180b] border ${a.border} ring-1 ${a.ring} rounded-3xl max-w-2xl w-full shadow-[0_0_80px_rgba(0,0,0,0.8)] max-h-[92vh] overflow-y-auto`}
+        style={{ animation: 'fadeSlideUp 0.35s cubic-bezier(0.16,1,0.3,1) forwards' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Gradient Header */}
+        <div className={`bg-gradient-to-br ${a.grad} rounded-t-3xl p-6 pb-5 relative overflow-hidden`}>
+          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, white 0%, transparent 60%)' }} />
+          <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition text-lg leading-none">&times;</button>
+          <div className="flex items-center gap-4 pr-10">
+            <div className={`w-14 h-14 rounded-2xl ${a.metricBg} border ${a.border} flex items-center justify-center text-3xl flex-shrink-0`}>{data.icon}</div>
+            <div>
+              <div className={`text-[10px] font-black tracking-[0.2em] uppercase ${a.text} mb-1`}>TradeFokus Intelligence</div>
+              <h3 className="text-lg sm:text-xl font-black text-white leading-tight">{data.title}</h3>
+            </div>
+          </div>
+          <p className="text-gray-300 text-xs leading-relaxed mt-4">{data.overview}</p>
+        </div>
+
+        <div className="p-5 space-y-5">
+          {/* Metrics — 3 per row, big numbers */}
+          <div>
+            <div className={`text-[10px] font-black tracking-[0.15em] uppercase ${a.text} mb-3 flex items-center gap-2`}>
+              <div className={`w-3 h-0.5 ${a.bar}`} /> Key Performance Metrics
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {data.metrics.map((m, i) => (
+                <div key={i} className={`${a.metricBg} border ${a.border} rounded-2xl p-3 text-center hover:scale-105 transition-transform`}>
+                  <div className={`text-xl sm:text-2xl font-black ${a.text} ${a.numGlow} leading-none mb-1`}>{m.value}</div>
+                  <div className="text-[9px] text-gray-500 uppercase tracking-wider leading-tight">{m.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Features — numbered list */}
+          <div>
+            <div className={`text-[10px] font-black tracking-[0.15em] uppercase ${a.text} mb-3 flex items-center gap-2`}>
+              <div className={`w-3 h-0.5 ${a.bar}`} /> Platform Capabilities
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {data.features.map((f, i) => (
+                <div key={i} className="flex items-start gap-2.5 bg-white/[0.025] rounded-xl px-3 py-2.5 hover:bg-white/[0.04] transition">
+                  <span className={`text-[10px] font-black ${a.text} mt-0.5 flex-shrink-0 w-4`}>0{i + 1}</span>
+                  <span className="text-gray-300 text-xs leading-relaxed">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Use Cases */}
+          <div>
+            <div className={`text-[10px] font-black tracking-[0.15em] uppercase ${a.text} mb-3 flex items-center gap-2`}>
+              <div className={`w-3 h-0.5 ${a.bar}`} /> Real-World Use Cases
+            </div>
+            <div className="space-y-1.5">
+              {data.useCases.map((u, i) => (
+                <div key={i} className="flex items-start gap-2.5 bg-white/[0.02] border border-white/[0.04] rounded-xl px-3 py-2.5">
+                  <div className={`w-1.5 h-1.5 rounded-full ${a.dot} mt-1.5 flex-shrink-0`} />
+                  <span className="text-gray-300 text-xs leading-relaxed">{u}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Client strip */}
+          <div className={`${a.badgeBg} border ${a.border} rounded-2xl p-4 flex items-start gap-3`}>
+            <span className="text-xl flex-shrink-0">&#x1F3C6;</span>
+            <p className="text-gray-300 text-xs italic leading-relaxed">{data.clients}</p>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex gap-3 pt-1">
+            <a href={wa} target="_blank" rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3.5 rounded-2xl font-black text-sm hover:bg-[#20c05c] transition hover:scale-[1.02] active:scale-[0.98]">
+              &#x1F4F1; Discuss with Expert
+            </a>
+            <button onClick={onClose}
+              className="px-5 border border-white/10 text-gray-500 py-3.5 rounded-2xl hover:bg-white/5 hover:text-gray-300 transition font-semibold text-sm">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const cssStyles = `
   @keyframes floatY {
     0%, 100% { transform: translateY(0px); }
@@ -192,78 +291,6 @@ export default function Home() {
   };
 
   const openDetail = (key: string, map: Record<string, DetailData>) => { if (map[key]) setActiveDetail(map[key]); };
-
-  const DetailModal = ({ data, onClose }: { data: DetailData; onClose: () => void }) => {
-    const accentMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
-      green:  { border: 'border-green-500/40', bg: 'bg-green-900/20', text: 'text-green-400', dot: 'bg-green-400' },
-      amber:  { border: 'border-amber-500/40', bg: 'bg-amber-900/20', text: 'text-amber-400', dot: 'bg-amber-400' },
-      blue:   { border: 'border-blue-500/40',  bg: 'bg-blue-900/20',  text: 'text-blue-400',  dot: 'bg-blue-400'  },
-      orange: { border: 'border-orange-500/40', bg: 'bg-orange-900/20', text: 'text-orange-400', dot: 'bg-orange-400' },
-    };
-    const a = accentMap[data.accent] || accentMap.green;
-    return (
-      <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4" onClick={onClose}>
-        <div className="bg-[#0d1f0d] border border-green-800/50 rounded-2xl max-w-3xl w-full shadow-2xl max-h-[90vh] overflow-y-auto anim-fadeSlideUp" onClick={e => e.stopPropagation()}>
-          <div className="flex items-start justify-between p-6 pb-4 border-b border-green-900/30">
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">{data.icon}</span>
-              <div>
-                <h3 className="text-xl font-black text-white">{data.title}</h3>
-                <p className={`text-xs font-bold tracking-widest uppercase mt-1 ${a.text}`}>Enterprise Intelligence Module</p>
-              </div>
-            </div>
-            <button onClick={onClose} className="text-gray-500 hover:text-white hover:rotate-90 transition text-2xl leading-none transform ml-4">&times;</button>
-          </div>
-          <div className="p-6 space-y-6">
-            <div>
-              <p className={`text-xs font-black tracking-widest uppercase mb-3 ${a.text}`}>Overview</p>
-              <p className="text-gray-300 text-sm leading-relaxed">{data.overview}</p>
-            </div>
-            <div>
-              <p className={`text-xs font-black tracking-widest uppercase mb-3 ${a.text}`}>Key Metrics</p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {data.metrics.map((m, i) => (
-                  <div key={i} className={`border ${a.border} rounded-xl p-3 text-center ${a.bg} hover:scale-105 transition`}>
-                    <div className={`text-lg font-black ${a.text}`}>{m.value}</div>
-                    <div className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">{m.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className={`text-xs font-black tracking-widest uppercase mb-3 ${a.text}`}>Platform Capabilities</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {data.features.map((f, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${a.dot}`} />
-                    <span className="text-gray-400 text-xs leading-relaxed">{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className={`text-xs font-black tracking-widest uppercase mb-3 ${a.text}`}>Enterprise Use Cases</p>
-              <div className="space-y-2">
-                {data.useCases.map((u, i) => (
-                  <div key={i} className="flex items-start gap-2 bg-white/[0.02] border border-green-900/15 rounded-lg px-3 py-2">
-                    <span className={`text-xs mt-0.5 ${a.text}`}>&rarr;</span>
-                    <span className="text-gray-300 text-xs">{u}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={`border ${a.border} rounded-xl p-4 ${a.bg}`}>
-              <p className="text-gray-400 text-xs italic">{data.clients}</p>
-            </div>
-            <div className="flex gap-3">
-              <a href={WA} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#1fbb59] transition">&#x1F4F1; Discuss This Module</a>
-              <button onClick={onClose} className="px-6 border border-green-800/40 text-gray-500 py-3 rounded-xl hover:bg-green-900/20 transition font-semibold text-sm">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <>
@@ -1028,7 +1055,7 @@ export default function Home() {
           </footer>
 
           {/* ENQUIRY MODAL */}
-          {activeDetail && <DetailModal data={activeDetail} onClose={() => setActiveDetail(null)} />}
+          {activeDetail && <DetailModal data={activeDetail} onClose={() => setActiveDetail(null)} wa={WA} />}
 
           {showQuoteForm && (
             <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
