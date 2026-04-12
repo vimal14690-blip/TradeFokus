@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 interface CommodityRate {
   name: string;
@@ -494,6 +495,7 @@ export default function Home() {
                   </div>
                   <button onClick={() => scrollTo('documentation')} className="text-gray-400 hover:text-green-400 transition">Documentation</button>
                   <button onClick={() => scrollTo('about')} className="text-gray-400 hover:text-green-400 transition">About</button>
+                  <Link href="/portal" className="text-green-400 hover:text-green-300 transition font-bold border border-green-400/40 px-3 py-1 rounded-full text-xs">Portal</Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <a href={`${WA}?text=${encodeURIComponent("Hi TradeFokus! I'd like to discuss commodity trading opportunities. Please connect me with your team.")}`} target="_blank" rel="noopener noreferrer"
@@ -519,6 +521,7 @@ export default function Home() {
                     <button key={item.id} onClick={() => scrollTo(item.id)}
                       className="block w-full text-left text-gray-300 py-2.5 px-2 hover:text-green-400 hover:bg-green-900/20 rounded-lg transition text-sm">{item.label}</button>
                   ))}
+                  <Link href="/portal" className="block w-full text-left text-green-400 py-2.5 px-2 hover:bg-green-900/20 rounded-lg transition text-sm font-bold">{'\u{1F6AA}'} Trade Portal</Link>
                   <button onClick={() => { setShowQuoteForm(true); setMobileMenuOpen(false); }}
                     className="block w-full bg-green-500 text-white py-3 rounded-xl font-bold mt-3 text-sm">Send Enquiry</button>
                 </div>
