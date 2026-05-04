@@ -213,7 +213,7 @@ export default function Home() {
 
         <div className="relative z-10">
           {/* NAV */}
-          <nav className="fixed w-full bg-[#0a1a0a]/95 backdrop-blur-md border-b border-green-900/30 z-50">
+          <nav className="fixed w-full bg-[#06120f]/95 backdrop-blur-xl border-b border-green-900/20 z-50 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <button onClick={() => scrollTo('hero')} className="flex items-center hover:opacity-80 transition">
@@ -272,7 +272,7 @@ export default function Home() {
                     &#x1F4F1; WhatsApp
                   </a>
                   <button onClick={() => setShowQuoteForm(true)} className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-400 transition font-bold text-sm">Enquiry</button>
-                  <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-green-400">
+                  <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-green-400 p-2 rounded-full hover:bg-white/10 transition">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -280,7 +280,7 @@ export default function Home() {
                 </div>
               </div>
               {mobileMenuOpen && (
-                <div className="lg:hidden border-t border-green-900/30 py-4 space-y-1">
+                <div className="lg:hidden border-t border-green-900/20 py-4 space-y-2 bg-[#06120f]/95 backdrop-blur-xl rounded-b-3xl shadow-2xl">
                   {[
                     { label: 'Home', id: 'hero' }, { label: '🌾 Agri Commodities', id: 'agri' },
                     { label: '🏭 Non-Agri Commodities', id: 'non-agri' }, { label: '📊 Market Prices', id: 'rates' },
@@ -299,7 +299,7 @@ export default function Home() {
           </nav>
 
           {/* HERO */}
-          <section id="hero" className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+          <section id="hero" className="pt-28 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Animated Globe Background */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/4 lg:translate-x-0 pointer-events-none opacity-20 lg:opacity-30">
               <div className="relative w-[500px] h-[500px] lg:w-[600px] lg:h-[600px]">
@@ -317,19 +317,23 @@ export default function Home() {
               <path d="M180,-20 Q560,200 940,100 T1700,310" stroke="#475569" strokeWidth="1" fill="none" strokeDasharray="4 11" />
             </svg>
             <div className="max-w-7xl mx-auto relative">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h1 className="text-7xl md:text-8xl font-black leading-none tracking-tight mb-4"
+              <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_minmax(320px,420px)] gap-12 items-center">
+                <div className="max-w-3xl">
+                  <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight mb-4"
                     style={{ textShadow: '0 0 40px rgba(15,23,42,0.18)' }}>
                     <span className="text-white">Trade</span>
                     <span className="text-sky-300">Fokus</span>
                   </h1>
-                  <p className="text-xl font-bold text-white mb-1">Enterprise commodity trade intelligence</p>
-                  <p className="text-base text-slate-300 font-semibold mb-6 max-w-xl">
-                    Verified sourcing, regulatory compliance and freight coordination for global buyers and suppliers.
+                  <div className="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-green-300 font-semibold mb-5 shadow-[0_12px_50px_-40px_rgba(37,211,102,0.9)]">
+                    <span className="text-[14px]">✦</span>
+                    Global commodity trade platform
+                  </div>
+                  <p className="text-xl md:text-2xl font-semibold text-white/95 mb-3">Enterprise commodity trade intelligence for verified sourcing, compliance and logistics execution.</p>
+                  <p className="text-base md:text-lg text-slate-300 font-medium mb-6 max-w-xl leading-relaxed">
+                    TradeFokus turns trade complexity into a polished platform experience for buyer, supplier and logistics teams.
                   </p>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-lg">
-                    TradeFokus operationalises commodity trade workflows with market insight, documentation control and shipment visibility in one professional platform.
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-10 max-w-lg">
+                    Market signals, compliance workflow and freight coordination in one modern interface designed for global commodity trade.
                   </p>
                   <div className="mb-8 rounded-3xl border border-slate-700 bg-slate-950/80 p-6">
                     <p className="text-slate-400 text-xs font-black tracking-widest uppercase mb-2">Platform overview</p>
@@ -347,20 +351,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="relative flex items-center justify-center min-h-[420px] lg:min-h-[520px]">
-                  <div className="bg-slate-950 border border-slate-700 rounded-[2rem] p-8 max-w-xl w-full shadow-2xl">
-                    <h3 className="mt-6 text-4xl font-black text-white leading-tight">Enterprise platform for commodity trade</h3>
-                    <p className="mt-4 text-gray-300 text-sm leading-relaxed">TradeFokus combines verified sourcing, compliance, freight and documentation into one professional workflow for buyer and supplier teams.</p>
-                    <div className="grid gap-4 mt-8">
-                      {[
-                        { title: 'Verified trade network', detail: 'Supplier, buyer and logistics partner credentials validated for export-grade trade.' },
-                        { title: 'Compliance-first workflows', detail: 'APEDA, FSSAI, customs and shipment documentation aligned with every transaction.' },
-                        { title: 'Market intelligence', detail: 'Price benchmarks, rate insight and logistics visibility to support trade decisions.' },
-                      ].map((item, idx) => (
-                        <div key={idx} className="rounded-3xl border border-slate-700 bg-slate-950/90 p-5">
-                          <p className="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">{item.title}</p>
-                          <p className="text-gray-300 text-sm leading-relaxed">{item.detail}</p>
-                        </div>
-                      ))}
+                  <div className="overflow-hidden rounded-[2rem] border border-slate-700/40 bg-gradient-to-br from-slate-950/95 via-slate-900/95 to-slate-950/95 shadow-[0_35px_80px_-30px_rgba(15,23,42,0.9)] w-full max-w-xl">
+                    <div className="h-1 bg-gradient-to-r from-green-400 via-sky-400 to-blue-400" />
+                    <div className="p-8">
+                      <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">Enterprise platform for commodity trade</h3>
+                      <p className="mt-4 text-gray-300 text-sm sm:text-base leading-relaxed">TradeFokus combines verified sourcing, compliance, freight and documentation into one modern workflow for buyer and supplier teams.</p>
+                      <div className="grid gap-4 mt-8">
+                        {[
+                          { title: 'Verified trade network', detail: 'Supplier, buyer and logistics partner credentials validated for export-grade trade.' },
+                          { title: 'Compliance-first workflows', detail: 'APEDA, FSSAI, customs and shipment documentation aligned with every transaction.' },
+                          { title: 'Market intelligence', detail: 'Price benchmarks, rate insight and logistics visibility to support trade decisions.' },
+                        ].map((item, idx) => (
+                          <div key={idx} className="rounded-3xl border border-slate-700 bg-slate-950/90 p-5">
+                            <p className="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">{item.title}</p>
+                            <p className="text-gray-300 text-sm leading-relaxed">{item.detail}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
